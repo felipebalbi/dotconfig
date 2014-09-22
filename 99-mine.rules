@@ -1,6 +1,15 @@
 ACTION=="remove", GOTO="private_rules_end"
 SUBSYSTEM!="tty", GOTO="private_rules_end"
 
+# All TotalPhase devices should belong to group usb
+SUBSYSTEMS=="usb", ATTRS{idVendor}="1679", GROUP="usb", MODE="0660"
+
+# All FTDI devices should belong to group usb
+SUBSYSTEMS=="usb", ATTRS{idVendor}="0403", GROUP="usb", MODE="0660"
+
+# All Google devices should belong to group usb
+SUBSYSTEMS=="usb", ATTRS{idVendor}="18d1", GROUP="usb", MODE="0660"
+
 # ttyUSB should always be 0660
 KERNELS=="ttyUSB[0-9]+", SUBSYSTEMS=="usb-serial", MODE="0660"
 
