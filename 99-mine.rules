@@ -8,12 +8,12 @@ KERNELS=="ttyUSB[0-9]+", SUBSYSTEMS=="usb-serial", MODE="0660"
 SUBSYSTEMS=="usb", ENV{ID_USB_INTERFACE_NUM}="$attr{bInterfaceNumber}"
 
 # BeagleBone Black
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="AD02CT1A", SYMLINK+="beagleboneblack"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="AD02CT1A", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="beagleboneblack"
 
 # AM437x Starter Kit
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{serial}=="FTXJI2WA", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="am437sk"
 
 # DRA7xx EVM
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A102S56R", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="dra7evm"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A102S56R", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="dra7evm"
 
 LABEL="private_rules_end"
