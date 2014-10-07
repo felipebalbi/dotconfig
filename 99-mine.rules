@@ -1,14 +1,22 @@
 ACTION=="remove", GOTO="private_rules_end"
-SUBSYSTEM!="tty", GOTO="private_rules_end"
+
+# All HTC devices should belong to group usb
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="usb", MODE="0660"
 
 # All TotalPhase devices should belong to group usb
-SUBSYSTEMS=="usb", ATTRS{idVendor}="1679", GROUP="usb", MODE="0660"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1679", GROUP="usb", MODE="0660"
 
 # All FTDI devices should belong to group usb
-SUBSYSTEMS=="usb", ATTRS{idVendor}="0403", GROUP="usb", MODE="0660"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", GROUP="usb", MODE="0660"
 
 # All Google devices should belong to group usb
-SUBSYSTEMS=="usb", ATTRS{idVendor}="18d1", GROUP="usb", MODE="0660"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="18d1", GROUP="usb", MODE="0660"
+
+############################
+## Start usb-serial Rules ##
+############################
+
+SUBSYSTEM!="tty", GOTO="private_rules_end"
 
 # ttyUSB should always be 0660
 KERNELS=="ttyUSB[0-9]+", SUBSYSTEMS=="usb-serial", MODE="0660"
@@ -21,6 +29,9 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{seri
 
 # AM437x Starter Kit
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{serial}=="FTXJI2WA", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="am437sk"
+
+# AM437x IDK Alpha
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{serial}=="FTWYQTI1", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="am437idkalpha"
 
 # DRA7xx EVM
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A102S56R", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="dra7evm"
