@@ -30,8 +30,8 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{seri
 # AM437x Starter Kit
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{serial}=="FTXJI2WA", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="am437sk"
 
-# AM437x IDK Alpha
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{serial}=="FTWYQTI1", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="am437idkalpha"
+# AM437x IDK
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{serial}=="FTXYORRZ", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="am437idk"
 
 # DRA7xx EVM
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A102S56R", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="dra7evm"
