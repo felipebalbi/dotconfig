@@ -12,6 +12,9 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", GROUP="usb", MODE="0660"
 # All Google devices should belong to group usb
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="18d1", GROUP="usb", MODE="0660"
 
+# All TI Devices should belong to group usb
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2047", GROUP="usb", MODE="0660"
+
 ############################
 ## Start usb-serial Rules ##
 ############################
