@@ -33,6 +33,9 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{seri
 # AM437x Starter Kit
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{serial}=="FTXJI2WA", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="am437sk"
 
+# Beagle X15
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A9WZFX1L", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="beaglex15"
+
 # AM437x IDK
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{serial}=="FTXYORRZ", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="am437idk"
 
