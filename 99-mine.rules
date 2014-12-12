@@ -37,7 +37,7 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{seri
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A9WZFX1L", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="beaglex15"
 
 # AM437x IDK
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{serial}=="FTXYORRZ", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="am437idk"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{serial}=="FTXY82UA", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="am437idk"
 
 # DRA7xx EVM
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A102S56R", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="dra7evm"
