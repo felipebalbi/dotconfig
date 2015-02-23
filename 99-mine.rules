@@ -42,4 +42,7 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", ATTRS{seri
 # DRA7xx EVM
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A102S56R", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="dra7evm"
 
+# DM3730 Overo
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A102JMYX", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="overo"
+
 LABEL="private_rules_end"
