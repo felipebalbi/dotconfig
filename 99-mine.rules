@@ -1,5 +1,8 @@
 ACTION=="remove", GOTO="private_rules_end"
 
+# All USB devices should belong to group usb
+SUBSYSTEMS=="usb", GROUP="usb", MODE="0660"
+
 # All HTC devices should belong to group usb
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="usb", MODE="0660"
 
