@@ -32,6 +32,7 @@
  '(show-paren-mode t)
  '(tab-width 8)
  '(tool-bar-mode nil)
+ '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
  '(user-full-name "Felipe Balbi")
  '(user-mail-address "balbi@ti.com"))
 (custom-set-faces
