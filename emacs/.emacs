@@ -4,6 +4,10 @@
 (global-set-key (kbd "C-@") 'er/expand-region)
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(c-basic-offset 8)
  '(c-default-style
    (quote
@@ -16,8 +20,9 @@
  '(fill-column 80)
  '(global-linum-mode t)
  '(indent-tabs-mode t)
- '(linum-format "%4d \u2502 ")
+ '(linum-format "%4d │ ")
  '(magit-diff-use-overlays nil)
+ '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-archives
    (quote
@@ -28,6 +33,10 @@
  '(tab-width 8)
  '(tool-bar-mode nil))
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default")))))
 
 (pending-delete-mode t)
