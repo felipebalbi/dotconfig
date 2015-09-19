@@ -31,7 +31,9 @@
  '(ruby-indent-level 2)
  '(show-paren-mode t)
  '(tab-width 8)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(user-full-name "Felipe Balbi")
+ '(user-mail-address "balbi@ti.com"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
