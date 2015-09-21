@@ -1,8 +1,3 @@
-(package-initialize)
-
-(require 'expand-region)
-(global-set-key (kbd "C-@") 'er/expand-region)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -14,6 +9,7 @@
     ((c-mode . "linux")
      (awk-mode . "awk")
      (other . "linux"))))
+ '(c-offsets-alist (quote ((arglist-intro . ++) (arglist-cont-nonempty . ++))))
  '(column-number-mode t)
  '(compilation-message-face (quote default))
  '(custom-enabled-themes (quote (wombat)))
@@ -24,17 +20,11 @@
  '(magit-diff-use-overlays nil)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
- '(package-archives
-   (quote
-    (("melpa" . "https://melpa.org/packages/")
-     ("gnu" . "http://elpa.gnu.org/packages/"))))
  '(ruby-indent-level 2)
  '(show-paren-mode t)
  '(tab-width 8)
- '(tool-bar-mode nil)
- '(uniquify-buffer-name-style (quote post-forward) nil (uniquify))
- '(user-full-name "Felipe Balbi")
- '(user-mail-address "balbi@ti.com"))
+ '(tool-bar-mode nil))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -53,3 +43,5 @@
 	     '("\\.\\(?:gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|ru\\|thor\\)\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist
 	     '("\\(Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . ruby-mode))
+
+(provide 'init-customizations)
