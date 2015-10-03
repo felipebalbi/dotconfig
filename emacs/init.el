@@ -39,9 +39,9 @@
      (:name "sent" :query "tag:sent" :key "t" :sort-order newest-first)
      (:name "drafts" :query "tag:draft" :key "d" :sort-order newest-first)
      (:name "all mail" :query "*" :key "a" :sort-order newest-first)
-     (:name "linux-usb" :query "to:linux-usb@vger.kernel.org" :sort-order newest-first)
-     (:name "linux-omap" :query "to:linux-omap@vger.kernel.org or cc:linux-omap@vger.kernel.org" :sort-order newest-first)
-     (:name "u-boot" :query "to:u-boot@lists.denx.de or cc:u-boot@lists.denx.de" :sort-order newest-first))))
+     (:name "linux-usb" :query "(to:linux-usb@vger.kernel.org or cc:linux-usb@vger.kernel.org) and tag:unread" :sort-order newest-first)
+     (:name "linux-omap" :query "(to:linux-omap@vger.kernel.org or cc:linux-omap@vger.kernel.org) and tag:unread" :sort-order newest-first)
+     (:name "u-boot" :query "(to:u-boot@lists.denx.de or cc:u-boot@lists.denx.de) and tag:unread" :sort-order newest-first))))
  '(ruby-indent-level 2)
  '(sendmail-program "/usr/bin/msmtp")
  '(show-paren-mode t)
@@ -53,3 +53,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default")))))
+
+;; Sign messages by default.
+(add-hook 'message-setup-hook 'mml-secure-sign-pgpmime)
