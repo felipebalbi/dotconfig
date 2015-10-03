@@ -24,9 +24,13 @@
  '(indent-tabs-mode t)
  '(linum-format "%4d │ ")
  '(magit-diff-use-overlays nil)
+ '(mail-envelope-from header)
+ '(mail-specify-envelope-from t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(message-kill-buffer-on-exit t)
+ '(message-send-mail-function (quote message-send-mail-with-sendmail))
+ '(message-sendmail-envelope-from (quote header))
  '(notmuch-saved-searches
    (quote
     ((:name "inbox" :query "tag:inbox" :key "i" :sort-order newest-first)
@@ -39,7 +43,7 @@
      (:name "linux-omap" :query "to:linux-omap@vger.kernel.org or cc:linux-omap@vger.kernel.org" :sort-order newest-first)
      (:name "u-boot" :query "to:u-boot@lists.denx.de or cc:u-boot@lists.denx.de" :sort-order newest-first))))
  '(ruby-indent-level 2)
- '(send-mail-function nil)
+ '(sendmail-program "/usr/bin/msmtp")
  '(show-paren-mode t)
  '(tab-width 8)
  '(tool-bar-mode nil))
