@@ -22,6 +22,7 @@
  '(fill-column 80)
  '(global-linum-mode t)
  '(indent-tabs-mode t)
+ '(inhibit-startup-screen t)
  '(linum-format "%4d │ ")
  '(magit-diff-use-overlays nil)
  '(mail-envelope-from header)
