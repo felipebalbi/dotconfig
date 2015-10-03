@@ -20,6 +20,7 @@
  '(magit-diff-use-overlays nil)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
+ '(message-kill-buffer-on-exit t)
  '(ruby-indent-level 2)
  '(show-paren-mode t)
  '(tab-width 8)
@@ -36,7 +37,7 @@
 
 ; add *.dts to c-mode
 (add-to-list 'auto-mode-alist
-	     '("\\.dts\\'" . c-mode))
+	     '("\\.\\(dts\\|dtsi\\)\\'" . c-mode))
 
 ; add some other ruby files to ruby-mode
 (add-to-list 'auto-mode-alist
