@@ -32,8 +32,7 @@
  '(message-send-mail-function (quote message-send-mail-with-sendmail))
  '(notmuch-saved-searches
    (quote
-    ((:name "inbox" :query "tag:inbox" :key "i" :sort-order newest-first)
-     (:name "unread" :query "tag:unread" :sort-order newest-first)
+    ((:name "unread" :query "tag:unread" :sort-order newest-first)
      (:name "flagged" :query "tag:flagged" :key "f" :sort-order newest-first)
      (:name "sent" :query "tag:sent" :key "t" :sort-order newest-first)
      (:name "drafts" :query "tag:draft" :key "d" :sort-order newest-first)
@@ -53,7 +52,10 @@
      (:name "lcpd-connectivity" :query "tag:lcpd-connectivity and tag:unread" :sort-order newest-first)
      (:name "usb-if" :query "tag:usb-if and tag:unread" :sort-order newest-first)
      (:name "mipi" :query "tag:mipi and tag:unread" :sort-order newest-first)
-     (:name "work-stuff" :query "from:*@ti.com and not (tag:lakml or tag:linux-arch or tag:linux-embedded or tag:linux-nfc or tag:linux-omap or tag:linux-usb or tag:lkml or tag:u-boot or tag:openocd or tag:linux-patch-review or tag:lcpd or tag:lcpd-lt or tag:lcpd-connectivity or tag:usb-if or tag:mipi) and tag:unread" :sort-order newest-first))))
+     (:name "work-stuff" :query "from:*@ti.com and not (tag:lakml or tag:linux-arch or tag:linux-embedded or tag:linux-nfc or tag:linux-omap or tag:linux-usb or tag:lkml or tag:u-boot or tag:openocd or tag:linux-patch-review or tag:lcpd or tag:lcpd-lt or tag:lcpd-connectivity or tag:usb-if or tag:mipi) and tag:unread" :key "w" :sort-order newest-first)
+     (:name "TODO" :query "tag:todo and tag:unread" :key "t" :sort-order newest-first)
+     (:name "important" :query "tag:important" :sort-order newest-first)
+     (:name "inbox+unread" :query "tag:inbox and tag:unread" :key "i" :sort-order newest-first))))
  '(ruby-indent-level 2)
  '(sendmail-program "/usr/bin/msmtp")
  '(show-paren-mode t)
