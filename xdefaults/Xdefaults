@@ -1,0 +1,5 @@
+xterm*metaSendsEscape: true
+xterm*background: black
+xterm*foreground: white
+xterm*faceName: DejaVu Sans Mono:style=Book
+xterm*faceSize: 9
