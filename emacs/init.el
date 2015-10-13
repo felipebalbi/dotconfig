@@ -2,6 +2,8 @@
 
 (require 'init-packages)
 (require 'init-notmuch)
+(require 'init-ace-link)
+(require 'init-org-mode)
 ;(require 'init-expand-region) disabling expand region for now
 
 (custom-set-variables
