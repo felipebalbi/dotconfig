@@ -58,6 +58,10 @@
  '(hl-fg-colors
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(ido-enable-flex-matching t)
+ '(ido-everywhere t)
+ '(ido-ignore-buffers (quote ("\\` " "\\*")))
+ '(ido-mode (quote both) nil (ido))
  '(indent-tabs-mode t)
  '(inhibit-startup-screen t)
  '(linum-format "%4d │ ")
