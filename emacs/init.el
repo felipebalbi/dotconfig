@@ -16,6 +16,7 @@
  '(ansi-color-names-vector
    ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#839496"])
  '(c-basic-offset 8)
+ '(c-block-comment-prefix "* ")
  '(c-default-style
    (quote
     ((c-mode . "linux")
@@ -58,6 +59,21 @@
  '(hl-fg-colors
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(ido-decorations
+   (quote
+    ("\n-> "
+     ""
+     "\n   "
+     "   ..."
+     "["
+     "]"
+     " [No match]"
+     " [Matched]"
+     " [Not readable]"
+     " [Too big]"
+     " [Confirm]"
+     "\n->  "
+     "")))
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
  '(ido-ignore-buffers (quote ("\\` " "\\*")))
