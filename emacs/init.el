@@ -146,3 +146,7 @@
 
 ;; Sign messages by default.
 (add-hook 'message-setup-hook 'mml-secure-sign-pgpmime)
+
+;; Set some environment variables
+(setenv "ARCH" "arm")
+(setenv "CROSS_COMPILE" "ccache arch-arm-gnueabihf-")
