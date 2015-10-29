@@ -87,7 +87,7 @@
  '(menu-bar-mode nil)
  '(message-kill-buffer-on-exit t)
  '(message-send-mail-function (quote message-send-mail-with-sendmail))
- '(normal-erase-is-backspace t)
+ '(normal-erase-is-backspace 0)
  '(notmuch-saved-searches
    (quote
     ((:name "unread" :query "tag:unread" :sort-order newest-first)
