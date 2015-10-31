@@ -74,8 +74,8 @@
      " [Confirm]"
      "\n->  "
      "")))
- '(ido-enable-flex-matching t)
- '(ido-everywhere t)
+ ;'(ido-enable-flex-matching nil)
+ ;'(ido-everywhere t)
  '(ido-ignore-buffers (quote ("\\` " "\\*")))
  '(ido-mode (quote both) nil (ido))
  '(indent-tabs-mode t)
