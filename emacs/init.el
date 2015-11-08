@@ -170,4 +170,6 @@
 
 ;; Set some environment variables
 (setenv "ARCH" "arm")
-(setenv "CROSS_COMPILE" "ccache arch-arm-gnueabihf-")
+(setenv "CROSS_COMPILE" "ccache arm-linux-gnueabihf-")
+(setenv "INSTALL_MOD_PATH" "/srv/nfs/")
+(setenv "KBUILD_OUTPUT" "/opt/balbi/build")
