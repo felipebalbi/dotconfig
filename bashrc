@@ -107,7 +107,7 @@ alias psremote='bk1785b -t /dev/ttyS0 -r 1'
 alias pson='bk1785b -t /dev/ttyS0 -o 1'
 alias psoff='bk1785b -t /dev/ttyS0 -o 0'
 alias psvolt='bk1785b -t /dev/ttyS0 -v'
-alias crossmake='make -s -j16 ARCH=arm CROSS_COMPILE="ccache arm-linux-gnueabihf-"'
+alias crossmake='make -s -j16 O=/opt/balbi/build ARCH=arm CROSS_COMPILE="ccache arm-linux-gnueabihf-"'
 
 # change ccache dir to /opt/cache
 export CCACHE_DIR=/opt/balbi/cache
