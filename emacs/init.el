@@ -4,6 +4,7 @@
 (require 'init-notmuch)
 (require 'init-ace-link)
 (require 'init-org-mode)
+(require 'init-dts-mode)
 ;(require 'init-expand-region) disabling expand region for now
 
 (custom-set-variables
@@ -169,7 +170,7 @@
 (add-hook 'message-setup-hook 'mml-secure-sign-pgpmime)
 
 ;; Set some environment variables
-(setenv "ARCH" "arm")
-(setenv "CROSS_COMPILE" "ccache arm-linux-gnueabihf-")
-(setenv "INSTALL_MOD_PATH" "/srv/nfs/")
-(setenv "KBUILD_OUTPUT" "/opt/balbi/build")
+;(setenv "ARCH" "arm")
+;(setenv "CROSS_COMPILE" "ccache arm-linux-gnueabihf-")
+;(setenv "INSTALL_MOD_PATH" "/srv/nfs/")
+;(setenv "KBUILD_OUTPUT" "/opt/balbi/build")
