@@ -15,6 +15,7 @@
 ;;       (package-install name t))))
 
 ;; (package-maybe-install 'ace-link)
+;; (package-maybe-install 'dts-mode)
 ;; (package-maybe-install 'notmuch)
 ;; (package-maybe-install 'org)
 
