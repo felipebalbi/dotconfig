@@ -1,8 +1,12 @@
-*~
+*-contents
 *.elc
 *.signed
-*-contents
-history
-lastdir
+*~
+
+emacs/elpa
+emacs/eshell
+emacs/kkcrc
 emacs/url/*
+history
 ido.last
+lastdir

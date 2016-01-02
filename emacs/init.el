@@ -1,12 +1,48 @@
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+; Package initialization
+(package-initialize)
 
-(require 'init-packages)
-(require 'init-notmuch)
-(require 'init-ace-link)
-(require 'init-org-mode)
-(require 'init-dts-mode)
-;(require 'init-expand-region) disabling expand region for now
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
 
+;; This depends on 3 packages only. Maybe I'll eventually enable the following
+;; (defun package-maybe-install (name)
+;;   "Given a list of package names, install one by one to make sure the following
+;;   initializations will work."
+
+;;   (unless (require name nil t)
+;;     (progn
+;;       (package-refresh-contents)
+;;       (package-install name t))))
+
+;; (package-maybe-install 'ace-link)
+;; (package-maybe-install 'notmuch)
+;; (package-maybe-install 'org)
+
+; ORG Mode setup
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+(setq org-capture-templates
+      '(("t"
+	 "Task item"
+	 entry
+	 (file+headline "~/workspace/org/notes.org" "Tasks")
+	 "* TODO %?\n   %i\n   %a")
+	))
+
+; ACE Link Default Setup
+(ace-link-setup-default)
+
+;; Sign email messages by default.
+(add-hook 'message-setup-hook 'mml-secure-sign-pgpmime)
+
+;; Set some environment variables
+;(setenv "ARCH" "arm")
+;(setenv "CROSS_COMPILE" "ccache arm-linux-gnueabihf-")
+;(setenv "INSTALL_MOD_PATH" "/srv/nfs/")
+;(setenv "KBUILD_OUTPUT" "/opt/balbi/build")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,6 +73,14 @@
  '(fci-rule-color "#eee8d5")
  '(fill-column 80)
  '(global-linum-mode t)
+ '(grep-command "git --no-pager grep -e ")
+ '(grep-find-command
+   (quote
+    ("find . -type f -exec grep --color -nH -e  {} +" . 42)))
+ '(grep-find-template "find <D> <X> -type f <F> -exec grep <C> -nH -e <R> {} +")
+ '(grep-highlight-matches (quote auto))
+ '(grep-template "grep <X> <C> -nH -e <R> <F>")
+ '(grep-use-null-device nil)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
@@ -62,26 +106,15 @@
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
  '(ido-decorations
    (quote
-    ("\n-> "
-     ""
-     "\n   "
-     "   ..."
-     "["
-     "]"
-     " [No match]"
-     " [Matched]"
-     " [Not readable]"
-     " [Too big]"
-     " [Confirm]"
-     "\n->  "
-     "")))
- ;'(ido-enable-flex-matching nil)
- ;'(ido-everywhere t)
+    ("
+-> " "" "
+   " "   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]" "
+->  " "")))
  '(ido-ignore-buffers (quote ("\\` " "\\*")))
  '(ido-mode (quote both) nil (ido))
  '(indent-tabs-mode t)
  '(inhibit-startup-screen t)
- '(linum-format "%4d │ ")
+ '(linum-format "%4d ")
  '(magit-diff-use-overlays nil)
  '(mail-specify-envelope-from t)
  '(make-backup-files nil)
@@ -118,6 +151,9 @@
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(package-selected-packages
+   (quote
+    (solarized-theme org-jira org notmuch magit expand-region dts-mode color-theme ace-link)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(ruby-indent-level 2)
@@ -164,13 +200,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default")))))
-
-;; Sign messages by default.
-(add-hook 'message-setup-hook 'mml-secure-sign-pgpmime)
-
-;; Set some environment variables
-;(setenv "ARCH" "arm")
-;(setenv "CROSS_COMPILE" "ccache arm-linux-gnueabihf-")
-;(setenv "INSTALL_MOD_PATH" "/srv/nfs/")
-;(setenv "KBUILD_OUTPUT" "/opt/balbi/build")
+ '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "#f6f3e8" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "default" :family "DejaVu Sans Mono")))))
