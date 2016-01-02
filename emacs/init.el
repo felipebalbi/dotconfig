@@ -158,6 +158,7 @@
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(ruby-indent-level 2)
+ '(scroll-bar-mode nil)
  '(sendmail-program "/usr/bin/msmtp")
  '(show-paren-mode t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
