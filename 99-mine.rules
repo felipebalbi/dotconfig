@@ -3,24 +3,10 @@ ACTION=="remove", GOTO="private_rules_end"
 # All USB devices should belong to group usb
 SUBSYSTEMS=="usb", GROUP="usb", MODE="0660"
 
-# All HTC devices should belong to group usb
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="usb", MODE="0660"
-
-# All TotalPhase devices should belong to group usb
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1679", GROUP="usb", MODE="0660"
-
-# All FTDI devices should belong to group usb
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", GROUP="usb", MODE="0660"
-
-# All Google devices should belong to group usb
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="18d1", GROUP="usb", MODE="0660"
-
-# All TI Devices should belong to group usb
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="2047", GROUP="usb", MODE="0660"
-
-############################
-## Start usb-serial Rules ##
-############################
+# Rules for better naming to USB Serial Devices I use on some boards.
+#
+# Note that these rules need constant(-ish) updates as I change boards
+# and/or change jobs.
 
 SUBSYSTEM!="tty", GOTO="private_rules_end"
 
