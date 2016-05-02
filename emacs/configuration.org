@@ -1,0 +1,439 @@
+#+TITLE: Emacs configuration
+
+* Introduction
+
+Managing [[https://www.gnu.org/software/emacs/][emacs]] configuration over time becomes tedious and error prone, because
+of that I'll be using [[http://orgmode.org/][org-mode]] in order to have a literate emacs configuration
+file which will be easier to understand over time.
+
+Note that this configuration has a few dependencies, which I list below, sorted
+alphabetically:
+
+- =company=
+- =engine-mode=
+- =helm=
+- =helm-ls-git=
+- =helm-notmuch=
+- =ledger-mode=
+- =magit=
+- =notmuch=
+- =org-bullets=
+- =solarized-theme=
+
+* User Information
+
+Setting up user information necessary for other tools such as [[https://notmuchmail.org/][notmuch]] and
+=calendar=.
+
+#+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Felipe Balbi"
+        user-mail-address "felipe.balbi@linux.intel.com"
+        calendar-latitude 60.17
+        calendar-longitude 24.94
+        calendar-location-name "Helsinki, FI")
+#+END_SRC
+
+* Package System initialization
+
+I'm using =emacs= traditional =package.el= but I really like all the packages
+available from [[http://melpa.org/][melpa]] repository, so let's add it to the =package-archives= list.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+  (setq package-selected-packages
+        (quote
+         (helm-ls-git
+          helm
+          helm-notmuch
+          engine-mode
+          org-bullets
+          ledger-mode
+          company
+          solarized-theme
+          org
+          magit
+          color-theme)))
+#+END_SRC
+
+* =org-mode= configuration
+
+First and foremost, let's get pretty =org-bullets= here.
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (org-bullets-mode t)))
+
+  (setq org-hide-leading-stars t)
+#+END_SRC
+
+Then switch to some nicer looking =org-ellipsis=.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-ellipsis "⤵")
+#+END_SRC
+
+And enable native syntax highlighting in source blocks while editting them.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-src-fontify-natively t)
+#+END_SRC
+
+Make =<TAB>= act as it would in a buffer of the language's major mode.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-src-tab-acts-natively t)
+#+END_SRC
+
+The following is to tell =org-mode= to use the current window, rather than a new
+one, when trying to edit a code snippet.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-src-window-setup 'current-window)
+#+END_SRC
+
+Here are the keybindings I'll be using.
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key "\C-cl" 'org-store-link)
+  (global-set-key "\C-ca" 'org-agenda)
+  (global-set-key "\C-cc" 'org-capture)
+  (global-set-key "\C-cb" 'org-iswitchb)
+#+END_SRC
+
+And a couple capture templates.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-capture-templates
+        '(("t"
+           "TODO item"
+           entry
+           (file+headline "~/workspace/org/todo.org" "TODO")
+           "* TODO %?\n   %i\n   %a")
+          ("s"
+           "Status Report"
+           entry
+           (file+datetree "~/workspace/org/status.org" "MSR")
+           "* %T\n* What was done?%?\n* Why this was done?\n* What is the impact to Intel?\n")
+          ));
+#+END_SRC
+
+* Email Configuration
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'message-setup-hook 'mml-secure-message-sign-pgpmime)
+  (setq message-kill-buffer-on-exit t
+        message-send-mail-function (quote message-send-mail-with-sendmail)
+        mail-specify-envelope-from t
+        sendmail-program "/usr/bin/msmtp"
+        notmuch-saved-searches
+        (quote
+         ((:name "unread" :query "tag:unread" :sort-order newest-first)
+          (:name "sent" :query "folder:sent and tag:unread" :key "t" :sort-order newest-first)
+          (:name "drafts" :query "tag:draft" :key "d" :sort-order newest-first)
+          (:name "linux-usb" :query "tag:linux-usb and tag:unread" :key "u" :sort-order newest-first)
+          (:name "linux-arch" :query "tag:linux-arch and tag:unread" :sort-order newest-first)
+          (:name "linux-embedded" :query "tag:linux-embedded and tag:unread" :sort-order newest-first)
+          (:name "lkml" :query "tag:lkml and tag:unread" :sort-order newest-first)
+          (:name "openocd" :query "tag:openocd and tag:unread" :sort-order newest-first)
+          (:name "fixes" :query "tag:fixes and tag:unread" :key "f" :sort-order newest-first)
+          (:name "important" :query "tag:important" :sort-order newest-first)
+          (:name "inbox+unread" :query "tag:inbox and tag:unread" :key "i" :sort-order newest-first)
+          (:name "linux-usb-to-me" :query "(to:balbi@kernel.org or cc:balbi@kernel.org or to:felipe.balbi@linux.intel.com or cc:felipe.balbi@linux.intel.com) and tag:linux-usb and tag:unread" :key "m" :sort-order newest-first)
+          (:name "next" :query "tag:next and tag:unread" :key "n" :sort-order newest-first))))
+#+END_SRC
+
+* Line and Column Number Display
+
+#+BEGIN_SRC emacs-lisp
+  (setq column-number-mode t
+        fill-column 80
+        indent-tabs-mode t
+        linum-format "%4d ")
+
+  (global-linum-mode t)
+#+END_SRC
+
+* Indentation and the like
+
+#+BEGIN_SRC emacs-lisp
+  (setq c-basic-offset 8
+        c-block-comment-prefix "* "
+        c-offsets-alist (quote ((arglist-intro . ++) (arglist-cont-nonempty . ++)))
+        c-default-style
+        (quote
+         ((c-mode . "linux")
+          (awk-mode . "awk")
+          (other . "linux")))
+        ruby-indent-level 2
+        tab-width 8)
+#+END_SRC
+
+* Highlight current line
+
+Make it clear where point is by highlighting current line
+
+#+BEGIN_SRC emacs-lisp
+  (when window-system
+    (global-hl-line-mode))
+#+END_SRC
+
+* Yay, =solarized= theme
+
+#+BEGIN_SRC emacs-lisp
+  (when window-system
+    (setq solarized-use-variable-pitch nil)
+    (setq solarized-height-plus-1 1.0)
+    (setq solarized-height-plus-2 1.0)
+    (setq solarized-height-plus-3 1.0)
+    (setq solarized-height-plus-4 1.0)
+    (setq solarized-high-contrast-mode-line t)
+    (load-theme 'solarized-dark t))
+#+END_SRC
+
+* =helm-mode=
+
+No idea why it took me so long to start using =helm-mode=, this thing is
+incredible.
+
+Anyway, let's require a few things here.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'helm-config)
+  (require 'helm-ls-git)
+  (require 'helm-git-grep)
+#+END_SRC
+
+Then we start configuring =helm-mode='s behavior with the following
+customizations:
+
+** open helm buffer inside current window
+
+#+BEGIN_SRC emacs-lisp
+  (setq helm-split-window-in-side-p t)
+#+END_SRC
+
+** move to end or beginning of source when reaching top or bottom
+
+#+BEGIN_SRC emacs-lisp
+  (setq  helm-move-to-line-cycle-in-source t)
+#+END_SRC
+
+** search for library in =require= and =declare-function= sexp
+
+#+BEGIN_SRC emacs-lisp
+  (setq helm-ff-search-library-in-sexp t)
+#+END_SRC
+
+** scroll 8 lines other window with =M-<next>= / =M-<prior>=
+
+#+BEGIN_SRC emacs-lisp
+  (setq helm-scroll-amount 8)
+#+END_SRC
+
+** use =recentf-list= instead of =file-name-history= in =helm-find-files=
+
+#+BEGIN_SRC emacs-lisp
+  (setq helm-ff-file-name-history-use-recentf t)
+#+END_SRC
+
+** define some keybindings
+
+#+BEGIN_SRC emacs-lisp
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+
+  (global-set-key (kbd "C-x b") 'helm-buffers-list)
+  (global-set-key (kbd "C-x r b") 'helm-bookmarks)
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+  (global-set-key (kbd "C-x C-d") 'helm-browse-project)
+
+  (global-set-key (kbd "C-c g") 'helm-git-grep)
+#+END_SRC
+
+** invoke =helm-git-grep= from isearch.
+
+#+BEGIN_SRC emacs-lisp
+  (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+#+END_SRC
+
+** invoke =helm-git-grep= from other helm.
+
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load 'helm
+    '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
+#+END_SRC
+
+** enable =helm-mode=
+
+#+BEGIN_SRC emacs-lisp
+  (helm-mode t)
+#+END_SRC
+
+* Pretty parenthesis
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+  (show-paren-mode t)
+  (electric-pair-mode t)
+#+END_SRC
+
+* UI Appearance
+
+#+BEGIN_SRC emacs-lisp
+  (setq inhibit-startup-screen t
+        make-backup-files nil
+        normal-erase-is-backspace t)
+
+  (global-prettify-symbols-mode t)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+#+END_SRC
+
+* Font Face & Size
+
+#+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'default t
+                      :family "Inconsolata"
+                      :height 120)
+#+END_SRC
+
+* Magit
+
+#+BEGIN_SRC emacs-lisp
+  (setq magit-diff-use-overlays nil)
+#+END_SRC
+
+* =engine-mode=
+
+#+BEGIN_SRC emacs-lisp
+  (require 'engine-mode)
+
+  (defengine amazon
+    "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s"
+    :keybinding "a")
+
+  (defengine duckduckgo
+    "https://duckduckgo.com/?q=%s"
+    :keybinding "d")
+
+  (defengine github
+    "https://github.com/search?ref=simplesearch&q=%s")
+
+  (defengine google
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+    :keybinding "g")
+
+  (defengine google-images
+    "http://www.google.com/images?hl=en&source=hp&biw=1440&bih=795&gbv=2&aq=f&aqi=&aql=&oq=&q=%s")
+
+  (defengine google-maps
+    "http://maps.google.com/maps?q=%s"
+    :keybinding "m")
+
+  (defengine stack-overflow
+    "https://stackoverflow.com/search?q=%s"
+    :keybinding "s")
+
+  (defengine twitter
+    "https://twitter.com/search?q=%s")
+
+  (defengine wikipedia
+    "http://www.wikipedia.org/search-redirect.php?language=en&go=Go&search=%s"
+    :keybinding "w")
+
+  (defengine wiktionary
+    "https://www.wikipedia.org/search-redirect.php?family=wiktionary&language=en&go=Go&search=%s")
+
+  (defengine wolfram-alpha
+    "http://www.wolframalpha.com/input/?i=%s")
+
+  (defengine youtube
+    "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
+    :keybinding "y")
+
+  (engine-mode t)
+
+  (engine/set-keymap-prefix (kbd "C-c s"))
+#+END_SRC
+
+* Some useful(-ish) defuns of my own
+
+#+BEGIN_SRC emacs-lisp
+  (defun format-email-address ()
+    "Returns a formated representation of USER-FULL-NAME and USER-MAIL-ADDRESS"
+    (if (null (and user-full-name user-mail-address))
+        (message "Please set USER-FULL-NAME and USER-MAIL-ADDRESS")
+      (concat user-full-name " <" user-mail-address ">")))
+
+  (defun insert-any-by (tag)
+    (save-excursion
+      (beginning-of-line)
+      (newline 3)
+      (previous-line 2)
+      (insert (concat tag ": " (format-email-address)))))
+
+  (defun insert-signed-off-by ()
+    "Inserts a Signed-off-by line to a patch"
+    (interactive)
+    (insert-any-by "Signed-off-by"))
+
+  (defun insert-reviewed-by ()
+    "Inserts a Reviewed-by line to a patch"
+    (interactive)
+    (insert-any-by "Reviewed-by"))
+
+  (defun insert-tested-by ()
+    "Inserts a Tested-by line to a patch"
+    (interactive)
+    (insert-any-by "Tested-by"))
+
+  (global-set-key (kbd "<f5>") 'insert-signed-off-by)
+  (global-set-key (kbd "<f6>") 'insert-reviewed-by)
+  (global-set-key (kbd "<f7>") 'insert-tested-by)
+#+END_SRC
+
+* Sh
+
+Indenting with 2 spaces
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'sh-mode-hook
+            (lambda ()
+              (setq sh-basic-offset 2
+                    sh-indentation 2)))
+#+END_SRC
+
+* Diary
+
+In fact, I'm wondering if I should move this to proper org. I barely ever use
+this diary file anyway. For now, I'll keep it as it is
+
+#+BEGIN_SRC emacs-lisp
+  (setq diary-file "~/workspace/org/diary")
+#+END_SRC
+
+* ERC
+
+#+BEGIN_SRC emacs-lisp
+  (require 'tls)
+  (require 'erc)
+
+  (defun start-erc ()
+    "Connect to Intel's IRC."
+    (interactive)
+    (erc-tls :server "otcirc.ostc.intel.com" :port 6697
+             :nick "balbi" :full-name "balbi"))
+
+  (put 'downcase-region 'disabled nil)
+
+  (add-hook 'c-mode-hook
+            (lambda ()
+              (setq default-directory "/home/balbi/workspace/linux/")))
+#+END_SRC
