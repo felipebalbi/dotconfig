@@ -399,6 +399,14 @@ customizations:
   (global-set-key (kbd "<f7>") 'insert-tested-by)
 #+END_SRC
 
+* GnuPG 2
+
+We're gonna tell =emacs= to use =gpg2=
+
+#+BEGIN_SRC emacs-lisp
+  (setq epg-gpg-program "/usr/bin/gpg2")
+#+END_SRC
+
 * Sh
 
 Indenting with 2 spaces
