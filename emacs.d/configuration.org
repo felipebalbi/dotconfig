@@ -445,3 +445,9 @@ this diary file anyway. For now, I'll keep it as it is
             (lambda ()
               (setq default-directory "/home/balbi/workspace/linux/")))
 #+END_SRC
+
+* EShell
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c t") 'eshell)
+#+END_SRC
