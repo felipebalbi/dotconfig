@@ -20,19 +20,6 @@ alphabetically:
 - =org-bullets=
 - =solarized-theme=
 
-* User Information
-
-Setting up user information necessary for other tools such as [[https://notmuchmail.org/][notmuch]] and
-=calendar=.
-
-#+BEGIN_SRC emacs-lisp
-  (setq user-full-name "Felipe Balbi"
-        user-mail-address "felipe.balbi@linux.intel.com"
-        calendar-latitude 60.17
-        calendar-longitude 24.94
-        calendar-location-name "Helsinki, FI")
-#+END_SRC
-
 * Package System initialization
 
 I'm using =emacs= traditional =package.el= but I really like all the packages
@@ -55,6 +42,19 @@ available from [[http://melpa.org/][melpa]] repository, so let's add it to the =
           org
           magit
           color-theme)))
+#+END_SRC
+
+* User Information
+
+Setting up user information necessary for other tools such as [[https://notmuchmail.org/][notmuch]] and
+=calendar=.
+
+#+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Felipe Balbi"
+        user-mail-address "felipe.balbi@linux.intel.com"
+        calendar-latitude 60.17
+        calendar-longitude 24.94
+        calendar-location-name "Helsinki, FI")
 #+END_SRC
 
 * =org-mode= configuration
