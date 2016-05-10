@@ -44,6 +44,16 @@ available from [[http://melpa.org/][melpa]] repository, so let's add it to the =
           color-theme)))
 #+END_SRC
 
+* Proxy Configuration
+
+Setting up my employer's proxy with environment variables so =M-x list-packages=
+can use it.
+
+#+BEGIN_SRC emacs-lisp
+  (setenv "http_proxy" "http://proxy.jf.intel.com:911")
+  (setenv "https_proxy" "http://proxy.jf.intel.com:911")
+#+END_SRC
+
 * User Information
 
 Setting up user information necessary for other tools such as [[https://notmuchmail.org/][notmuch]] and
