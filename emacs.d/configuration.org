@@ -138,6 +138,7 @@ And a couple capture templates.
         message-send-mail-function (quote message-send-mail-with-sendmail)
         mail-specify-envelope-from t
         sendmail-program "/usr/bin/msmtp"
+        notmuch-show-indent-content nil
         notmuch-saved-searches
         (quote
          ((:name "unread" :query "tag:unread" :sort-order newest-first)
