@@ -68,6 +68,8 @@ Setting up user information necessary for other tools such as [[https://notmuchm
 #+END_SRC
 
 * =org-mode= configuration
+  - Note taken on [2016-06-10 Fri 13:45] \\
+    testing
 
 First and foremost, let's get pretty =org-bullets= here.
 
@@ -77,6 +79,24 @@ First and foremost, let's get pretty =org-bullets= here.
               (org-bullets-mode t)))
 
   (setq org-hide-leading-stars t)
+#+END_SRC
+
+Then we set our preferred =org-directory=
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-directory "~/workspace/org")
+#+END_SRC
+
+And our =org-default-notes-file= location
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+#+END_SRC
+
+And our =org-agenda-files=
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-agenda-files (concat org-directory "/agenda.org"))
 #+END_SRC
 
 Then switch to some nicer looking =org-ellipsis=.
@@ -116,18 +136,20 @@ Here are the keybindings I'll be using.
 And a couple capture templates.
 
 #+BEGIN_SRC emacs-lisp
-  (setq org-capture-templates
-        '(("t"
-           "TODO item"
-           entry
-           (file+headline "~/workspace/org/todo.org" "TODO")
-           "* TODO %?\n   %i\n   %a")
-          ("s"
-           "Status Report"
-           entry
-           (file+datetree "~/workspace/org/status.org" "MSR")
-           "* %T\n* What was done?%?\n* Why this was done?\n* What is the impact to Intel?\n")
-          ));
+    (setq org-capture-templates
+          '(("t"
+             "TODO item"
+             entry
+             (file+headline (concat org-directory "/todo.org") "TODO")
+             "* TODO %? [%T]\n   %i\n   %a")
+            ("j" "Journal" entry (file+datetree "~/org/journal.org")
+               "* %?\nEntered on %U\n  %i\n  %a")
+            ("s"
+             "Status Report"
+             entry
+             (file+datetree (concat org-directory "/status.org") "MSR")
+             "* %T\n* What was done?%?\n* Why this was done?\n* What is the impact to Intel?\n")
+            ))
 #+END_SRC
 
 * Email Configuration
