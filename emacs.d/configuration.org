@@ -155,11 +155,14 @@ And a couple capture templates.
 * Email Configuration
 
 #+BEGIN_SRC emacs-lisp
+  (require 'notmuch)
+
   (add-hook 'message-setup-hook 'mml-secure-message-sign-pgpmime)
   (setq message-kill-buffer-on-exit t
         message-send-mail-function (quote message-send-mail-with-sendmail)
         mail-specify-envelope-from t
         sendmail-program "/usr/bin/msmtp"
+        notmuch-crypto-process-mime t
         notmuch-show-indent-content nil
         notmuch-saved-searches
         (quote
