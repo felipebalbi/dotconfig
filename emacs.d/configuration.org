@@ -343,7 +343,8 @@ customizations:
 * Magit
 
 #+BEGIN_SRC emacs-lisp
-  (setq magit-diff-use-overlays nil)
+  (setq magit-diff-use-overlays nil
+        magit-commit-arguments '("--signoff"))
 #+END_SRC
 
 * =engine-mode=
