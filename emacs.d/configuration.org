@@ -488,3 +488,8 @@ this diary file anyway. For now, I'll keep it as it is
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-c t") 'eshell)
 #+END_SRC
+* Disabled commands
+
+#+BEGIN_SRC emacs-lisp
+  (put 'narrow-to-region 'disabled nil)
+#+END_SRC
