@@ -335,9 +335,9 @@ customizations:
 * Font Face & Size
 
 #+BEGIN_SRC emacs-lisp
-  (set-face-attribute 'default t
-                      :font "DejaVu Sans Mono"
-                      :height 120)
+  (set-face-attribute 'default nil
+                      :font "DejaVu Sans Mono:style=Book"
+                      :height 110)
 #+END_SRC
 
 * Magit
