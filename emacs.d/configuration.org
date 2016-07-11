@@ -336,7 +336,7 @@ customizations:
 
 #+BEGIN_SRC emacs-lisp
   (set-face-attribute 'default t
-                      :family "Inconsolata"
+                      :font "DejaVu Sans Mono"
                       :height 120)
 #+END_SRC
 
