@@ -178,6 +178,7 @@ And a couple capture templates.
           (:name "important" :query "tag:important" :sort-order newest-first)
           (:name "inbox+unread" :query "tag:inbox and tag:unread" :key "i" :sort-order newest-first)
           (:name "linux-usb-to-me" :query "(to:balbi@kernel.org or cc:balbi@kernel.org or to:felipe.balbi@linux.intel.com or cc:felipe.balbi@linux.intel.com) and tag:linux-usb and tag:unread" :key "m" :sort-order newest-first)
+          (:name "yocto" :query "tag:yocto and tag:unread")
           (:name "next" :query "tag:next and tag:unread" :key "n" :sort-order newest-first))))
 #+END_SRC
 
