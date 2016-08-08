@@ -489,4 +489,5 @@ this diary file anyway. For now, I'll keep it as it is
 
 #+BEGIN_SRC emacs-lisp
   (put 'narrow-to-region 'disabled nil)
+  (put 'upcase-region 'disabled nil)
 #+END_SRC
