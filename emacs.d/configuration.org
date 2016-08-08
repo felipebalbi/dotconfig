@@ -478,10 +478,6 @@ this diary file anyway. For now, I'll keep it as it is
              :nick "balbi" :full-name "balbi"))
 
   (put 'downcase-region 'disabled nil)
-
-  (add-hook 'c-mode-hook
-            (lambda ()
-              (setq default-directory "/home/balbi/workspace/linux/")))
 #+END_SRC
 
 * EShell
