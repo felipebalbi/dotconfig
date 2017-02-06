@@ -228,11 +228,17 @@ Enable ODT Export for =org-mode=
 
 * Ledger Mode
 #+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path "~/workspace/ledger-mode/")
+
+  (require 'ledger-mode)
+
   (add-to-list 'auto-mode-alist '("\\.ledger\\'" . ledger-mode))
+  (add-to-list 'ledger-environment-alist '("decimal-comma" . t))
+
   (setq ledger-clear-whole-transactions t
         ledger-reconcile-default-commodity "€"
-        ledger-master-file "/home/balbi/workspace/accounting/general.ledger")
-  (setq ledger-reports
+        ledger-master-file "/home/balbi/workspace/accounting/general.ledger"
+        ledger-reports
         (quote
          (("bal" "%(binary) -f %(ledger-file) bal -B")
           ("reg" "%(binary) -f %(ledger-file) reg")
