@@ -44,6 +44,12 @@ available from [[http://melpa.org/][melpa]] repository, so let's add it to the =
           color-theme)))
 #+END_SRC
 
+* Always ask confirmation before exitting emacs
+
+#+BEGIN_SRC emacs-lisp
+  (setq confirm-kill-emacs 'yes-or-no-p)
+#+END_SRC
+
 * Proxy Configuration
 
 Setting up my employer's proxy with environment variables so =M-x list-packages=
@@ -136,22 +142,29 @@ Here are the keybindings I'll be using.
 And a couple capture templates.
 
 #+BEGIN_SRC emacs-lisp
-    (setq org-capture-templates
-          '(("t"
-             "TODO item"
-             entry
-             (file+headline (concat org-directory "/todo.org") "TODO")
-             "* TODO %? [%T]\n   %i\n   %a")
-            ("j" "Journal" entry (file+datetree "~/org/journal.org")
-               "* %?\nEntered on %U\n  %i\n  %a")
-            ("s"
-             "Status Report"
-             entry
-             (file+datetree (concat org-directory "/status.org") "MSR")
-             "* %T\n* What was done?%?\n* Why this was done?\n* What is the impact to Intel?\n")
-            ))
+      (setq org-capture-templates
+            '(("t"
+               "TODO item"
+               entry
+               (file+headline (concat org-directory "/todo.org") "TODO")
+               "* TODO %? [%T]\n   %i\n   %a")
+              ("j" "Journal" entry
+               (file+datetree (concat org-directory "/journal.org"))
+                 "* %?\nEntered on %U\n  %i\n  %a")
+              ("s"
+               "Status Report"
+               entry
+               (file+datetree (concat org-directory "/status.org") "MSR")
+               "* %T\n* ")
+              ))
 #+END_SRC
 
+Enable ODT Export for =org-mode=
+
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load "org"
+    '(require 'ox-odt nil t))
+#+END_SRC
 * Email Configuration
 
 #+BEGIN_SRC emacs-lisp
@@ -169,6 +182,9 @@ And a couple capture templates.
          ((:name "unread" :query "tag:unread" :sort-order newest-first)
           (:name "sent" :query "folder:sent and tag:unread" :key "t" :sort-order newest-first)
           (:name "drafts" :query "tag:draft" :key "d" :sort-order newest-first)
+          (:name "intel/eywa" :query "tag:eywa and tag:unread" :sort-order newest-first)
+          (:name "intel/kernel" :query "tag:kernel and tag:unread" :sort-order newest-first)
+          (:name "intel/linux-usb" :query "tag:intel-linux-usb and tag:unread" :sort-order newest-first)
           (:name "linux-usb" :query "tag:linux-usb and tag:unread" :key "u" :sort-order newest-first)
           (:name "linux-arch" :query "tag:linux-arch and tag:unread" :sort-order newest-first)
           (:name "linux-embedded" :query "tag:linux-embedded and tag:unread" :sort-order newest-first)
@@ -177,8 +193,10 @@ And a couple capture templates.
           (:name "fixes" :query "tag:fixes and tag:unread" :key "f" :sort-order newest-first)
           (:name "important" :query "tag:important" :sort-order newest-first)
           (:name "inbox+unread" :query "tag:inbox and tag:unread" :key "i" :sort-order newest-first)
+          (:name "USING-MY-WRONG-EMAIL" :query "(to:balbi@ti.com or cc:balbi@ti.com) and tag:unread")
           (:name "linux-usb-to-me" :query "(to:balbi@kernel.org or cc:balbi@kernel.org or to:felipe.balbi@linux.intel.com or cc:felipe.balbi@linux.intel.com) and tag:linux-usb and tag:unread" :key "m" :sort-order newest-first)
           (:name "yocto" :query "tag:yocto and tag:unread")
+          (:name "trace_export" :query "tag:trace_export and tag:unread")
           (:name "next" :query "tag:next and tag:unread" :key "n" :sort-order newest-first))))
 #+END_SRC
 
@@ -208,6 +226,20 @@ And a couple capture templates.
         tab-width 8)
 #+END_SRC
 
+* Ledger Mode
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'auto-mode-alist '("\\.ledger\\'" . ledger-mode))
+  (setq ledger-clear-whole-transactions t
+        ledger-reconcile-default-commodity "€"
+        ledger-master-file "/home/balbi/workspace/accounting/general.ledger")
+  (setq ledger-reports
+        (quote
+         (("bal" "%(binary) -f %(ledger-file) bal -B")
+          ("reg" "%(binary) -f %(ledger-file) reg")
+          ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+          ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
+
+#+END_SRC
 * Highlight current line
 
 Make it clear where point is by highlighting current line
@@ -337,7 +369,7 @@ customizations:
 
 #+BEGIN_SRC emacs-lisp
   (set-face-attribute 'default nil
-                      :font "DejaVu Sans Mono:style=Book"
+                      :font "DejaVu Sans Mono for Powerline:style=Book"
                       :height 110)
 #+END_SRC
 
@@ -484,6 +516,21 @@ this diary file anyway. For now, I'll keep it as it is
 
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-c t") 'eshell)
+#+END_SRC
+* Ruby
+#+BEGIN_SRC emacs-lisp
+  (require 'flymake-ruby)
+  (require 'rspec-mode)
+  (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+  (eval-after-load 'rspec-mode
+   '(rspec-install-snippets))
+#+END_SRC
+* Powerline
+Yup, =powerline= is really cool and I'm using it on zsh and emacs.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'powerline)
+  (powerline-default-theme)
 #+END_SRC
 * Disabled commands
 
