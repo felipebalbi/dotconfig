@@ -58,8 +58,14 @@ can use it.
 #+BEGIN_SRC emacs-lisp
   (setenv "http_proxy" "http://proxy.jf.intel.com:911")
   (setenv "https_proxy" "http://proxy.jf.intel.com:911")
+  (setenv "no_proxy" "jira01.devtools.intel.com")
+
 #+END_SRC
 
+* JIRA configuration
+#+BEGIN_SRC emacs-lisp
+  (setq jiralib-url "https://jira01.devtools.intel.com")
+#+END_SRC
 * User Information
 
 Setting up user information necessary for other tools such as [[https://notmuchmail.org/][notmuch]] and
@@ -190,6 +196,7 @@ Enable ODT Export for =org-mode=
           (:name "linux-embedded" :query "tag:linux-embedded and tag:unread" :sort-order newest-first)
           (:name "lkml" :query "tag:lkml and tag:unread" :sort-order newest-first)
           (:name "openocd" :query "tag:openocd and tag:unread" :sort-order newest-first)
+          (:name "u-boot" :query "tag:u-boot and tag:unread" :sort-order newest-first)
           (:name "fixes" :query "tag:fixes and tag:unread" :key "f" :sort-order newest-first)
           (:name "important" :query "tag:important" :sort-order newest-first)
           (:name "inbox+unread" :query "tag:inbox and tag:unread" :key "i" :sort-order newest-first)
@@ -237,6 +244,7 @@ Enable ODT Export for =org-mode=
 
   (setq ledger-clear-whole-transactions t
         ledger-reconcile-default-commodity "€"
+        ledger-reconcile-force-window-bottom t
         ledger-master-file "/home/balbi/workspace/accounting/general.ledger"
         ledger-reports
         (quote
