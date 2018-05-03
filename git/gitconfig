@@ -1,36 +1,33 @@
 [user]
 	name = Felipe Balbi
-	email = balbi@ti.com
+	email = felipe.balbi@linux.intel.com
 [format]
 	suffix = .diff
-#	headers = Organization: Texas Instruments\\n
 	numbered = auto
+[core]
+	editor = emacs25 -nw
+	abbrev = 12
+	gitproxy = none for intel.com
+	gitproxy = /home/balbi/.local/bin/git-proxy.sh
+[grep]
+	linenumber = true
+	extendedRegexp = true
 [sendemail]
-	config = auto
-	chainreplyto = false
 	smtpserver = /usr/bin/msmtp
 	confirm = auto
-	aliasesfile = /home/balbi/.mutt/aliases
+	aliasesfile = /home/balbi/.aliases
 	aliasfiletype = mutt
+	chainreplyto = false
 	composeencoding = UTF-8
 	assume8bitEncoding = UTF-8
+[gpg]
+	program = /usr/bin/gpg2
+[fetch]
+	prune = true
 [color]
 	ui = auto
 [merge]
 	tool = emerge
 	renamelimit = 2030
-[diff]
-	renames = true
-[mergetool]
-	keepBackup = false
-[push]
-	default = simple
-[grep]
-	linenumber = true
-	extendedRegexp = true
-[core]
-	abbrev = 12
-	editor = emacsclient -t
-	#gitproxy = /home/balbi/.local/bin/git-proxy
 [github]
 	user = felipebalbi
