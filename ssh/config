@@ -1,0 +1,52 @@
+host	home
+	hostname felipebalbi.com
+	user balbi
+	port 34731
+	identityfile cardno:000500003AC5
+	clearallforwardings yes
+	# we prefer ed25519 keys, but will fall back to others if your
+	# openssh client does not support that
+	hostkeyalgorithms ssh-ed25519,ecdsa-sha2-nistp256,ssh-rsa
+	# below are very useful for speeding up repeat access
+	# if you tend to run a lot of git commands in succession
+	controlpath ~/.ssh/cm-%r@%h:%p
+	controlmaster auto
+	controlpersist 10m
+
+host	irssi
+	hostname felipebalbi.com
+	user balbi
+	port 34732
+	identityfile cardno:000500003AC5
+	clearallforwardings yes
+	# we prefer ed25519 keys, but will fall back to others if your
+	# openssh client does not support that
+	hostkeyalgorithms ssh-ed25519,ecdsa-sha2-nistp256,ssh-rsa
+	# below are very useful for speeding up repeat access
+	# if you tend to run a lot of git commands in succession
+	controlpath ~/.ssh/cm-%r@%h:%p
+	controlmaster auto
+	controlpersist 10m
+
+host gitolite.kernel.org
+	user git
+	identityfile ~/.ssh/balbi
+	identitiesonly yes
+	clearallforwardings yes
+	# we prefer ed25519 keys, but will fall back to others if your
+	# openssh client does not support that
+	hostkeyalgorithms ssh-ed25519,ecdsa-sha2-nistp256,ssh-rsa
+	# below are very useful for speeding up repeat access
+	# if you tend to run a lot of git commands in succession
+	controlpath ~/.ssh/cm-%r@%h:%p
+	controlmaster auto
+	controlpersist 10m
+
+host	github.com
+	user git
+	identityfile ~/.ssh/id_rsa
+
+host	openocd
+	hostname openocd.zylin.com
+	user felipebalbi
+	port 29418
