@@ -1,16 +1,1 @@
-*-contents
-*.elc
-*.signed
 *~
-
-emacs/elpa
-emacs/eshell
-emacs/kkcrc
-emacs/url/*
-emacs/configuration.el
-emacs/*.html
-emacs/*.pdf
-emacs/*.txt
-history
-ido.last
-lastdir
