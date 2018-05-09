@@ -77,7 +77,7 @@ install_remaining_dot_files () {
   ln -s ~/.zshrc ~/workspace/dotconfig/zsh/zshrc
 }
 
-if [ test -a ~/.system_setup_done ]; then
+if [[ -a ~/.system_setup_done ]]; then
   echo "System already setup"
   exit 1
 fi
