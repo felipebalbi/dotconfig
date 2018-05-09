@@ -53,7 +53,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # keyboard layout
-exec --no-startup-id setxkbmap -layout us -option ctrl:swapcas &
+exec --no-startup-id setxkbmap -layout us &
 
 # switch to workspace
 bindsym $mod+1 workspace 1
