@@ -27,12 +27,8 @@ REPOSITORIES="https://github.com/felipebalbi/usb-tools.git	\
               https://github.com/felipebalbi/emacs.d.git	\
               https://github.com/felipebalbi/dotconfig.git"
 
-install_sudo () {
-  su -c "apt-get install -q -y sudo && adduser balbi sudo"
-}
-
 install_debian_packages () {
-  sudo apt-get install -q -y $DEBIAN_PACKAGES
+  su -c "apt-get install -q -y $DEBIAN_PACKAGES && adduser balbi sudo"
 }
 
 install_oh_my_zsh () {
