@@ -10,7 +10,7 @@ DEBIAN_PACKAGES="		\
 		i3lock-fancy	\
 		libncurses5-dev	\
 		libpng-dev	\
-		libpopper-glib-dev \
+		libpoppler-glib-dev \
 		libpoppler-private-dev \
 		lilyterm	\
 		rofi		\
