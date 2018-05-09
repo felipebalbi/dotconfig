@@ -23,9 +23,9 @@ DEBIAN_PACKAGES="		\
 		zsh		\
 		"
 
-REPOSITORIES="git@github.com:felipebalbi/usb-tools.git	\
-              git@github.com:felipebalbi/emacs.d.git	\
-              git@github.com:felipebalbi/dotconfig.git"
+REPOSITORIES="https://github.com/felipebalbi/usb-tools.git	\
+              https://github.com/felipebalbi/emacs.d.git	\
+              https://github.com/felipebalbi/dotconfig.git"
 
 install_sudo () {
   su -c "apt-get install -q -y sudo && adduser balbi sudo"
