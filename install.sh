@@ -65,12 +65,12 @@ install_fonts () {
 }
 
 install_remaining_dot_files () {
-  ln -s ~/.emacs.d ~/workspace/dotconfig/emacs.d
-  ln -s ~/.config/i3 ~/workspace/dotconfig/i3/
-  ln -s ~/.i3blocks.conf ~/workspace/dotconfig/i3blocks/i3blocks.conf
-  ln -s ~/.gitconfig ~/workspace/dotconfig/git/gitconfig
-  ln -s ~/.config/rofi ~/workspace/dotconfig/rof
-  ln -s ~/.zshrc ~/workspace/dotconfig/zsh/zshrc
+  ln -s ~/workspace/dotconfig/emacs.d ~/.emacs.d
+  ln -s ~/workspace/dotconfig/i3/ ~/.config/i3
+  ln -s ~/workspace/dotconfig/i3blocks/i3blocks.conf ~/.i3blocks.conf
+  ln -s ~/workspace/dotconfig/git/gitconfig ~/.gitconfig
+  ln -s ~/workspace/dotconfig/rofi ~/.config/rofi
+  ln -s ~/workspace/dotconfig/zsh/zshrc ~/.zshrc
 }
 
 if [[ -a ~/.system_setup_done ]]; then
