@@ -59,6 +59,8 @@ export https_proxy="http://proxy.jf.intel.com:912"
 export no_proxy="localhost,.intel.com"
 export auto_proxy="http://autoproxy.intel.com/"
 
+export SSH_AUTH_SOCK=`gpgconf --list-dirs agent-ssh-socket`
+
 # Debian
 export DEBEMAIL="balbi@kernel.org"
 export DEBFULLNAME="Felipe Balbi"
@@ -94,6 +96,8 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias uu="udisksctl unmount -b"
 
 # added by travis gem
 [ -f /home/balbi/.travis/travis.sh ] && source /home/balbi/.travis/travis.sh
