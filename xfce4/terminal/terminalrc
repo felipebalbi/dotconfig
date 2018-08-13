@@ -1,5 +1,5 @@
 [Configuration]
-FontName=DejaVu Sans Mono for Powerline 12
+FontName=DejaVu Sans Mono for Powerline 10
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBellUrgent=FALSE
@@ -34,4 +34,6 @@ MiscUseShiftArrowsToScroll=FALSE
 MiscSlimTabs=FALSE
 Encoding=UTF-8
 ScrollingUnlimited=TRUE
+MiscShowRelaunchDialog=TRUE
+MiscNewTabAdjacent=FALSE
 
