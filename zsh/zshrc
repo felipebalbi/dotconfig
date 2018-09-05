@@ -1,4 +1,4 @@
-export PATH=$HOME/.cargo/bin:$HOME/.local/bin:/usr/lib/ccache:/usr/local/bin:$PATH
+export PATH=/home/balbi/.gem/ruby/2.5.0/bin:$HOME/.local/bin:/usr/lib/ccache:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/balbi/.oh-my-zsh
