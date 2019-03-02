@@ -5,7 +5,7 @@
 	suffix = .diff
 	numbered = auto
 [core]
-	editor = emacs25 -nw
+	editor = emacs -nw
 	abbrev = 12
 	gitproxy = none for intel.com
 	gitproxy = /home/balbi/.local/bin/git-proxy.sh
