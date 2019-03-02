@@ -53,11 +53,11 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export ftp_proxy="http://proxy.jf.intel.com:911"
-export http_proxy="http://proxy.jf.intel.com:911"
-export https_proxy="http://proxy.jf.intel.com:912"
-export no_proxy="localhost,.intel.com"
-export auto_proxy="http://autoproxy.intel.com/"
+# export ftp_proxy="http://proxy.jf.intel.com:911"
+# export http_proxy="http://proxy.jf.intel.com:911"
+# export https_proxy="http://proxy.jf.intel.com:912"
+# export no_proxy="localhost,.intel.com"
+# export auto_proxy="http://autoproxy.intel.com/"
 
 export SSH_AUTH_SOCK=`gpgconf --list-dirs agent-ssh-socket`
 
