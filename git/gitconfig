@@ -7,8 +7,8 @@
 [core]
 	editor = emacs -nw
 	abbrev = 12
-	gitproxy = none for intel.com
-	gitproxy = /home/balbi/.local/bin/git-proxy.sh
+#	gitproxy = none for intel.com
+#	gitproxy = /home/balbi/.local/bin/git-proxy.sh
 [grep]
 	linenumber = true
 	extendedRegexp = true
