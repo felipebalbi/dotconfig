@@ -65,6 +65,7 @@ install_fonts () {
 }
 
 install_remaining_dot_files () {
+  ln -s ~/workspace/dotconfig/dunst ~/.config/dunst
   ln -s ~/workspace/dotconfig/emacs.d ~/.emacs.d
   ln -s ~/workspace/dotconfig/git/gitconfig ~/.gitconfig
   ln -s ~/workspace/dotconfig/i3/ ~/.config/i3
