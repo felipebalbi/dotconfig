@@ -153,5 +153,8 @@ bar {
 # Nitrogen
 exec --no-startup-id nitrogen --restore &
 
+# Dunst
+exec --no-startup-id dunst &
+
 # Simics main window should be floating
 for_window [class="Simics-common"] floating enable
