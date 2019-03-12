@@ -150,6 +150,9 @@ bar {
 	}
 }
 
+# Pulseaudio
+exec --no-startup-id pulseaudio --start &
+
 # Nitrogen
 exec --no-startup-id nitrogen --restore &
 
