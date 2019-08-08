@@ -1,9 +1,0 @@
-[submodule "emacs.d"]
-	path = emacs.d
-	url = github.com:felipebalbi/emacs.d.git
-[submodule "emacs-color-theme-solarized"]
-	path = emacs-color-theme-solarized
-	url = https://github.com/sellout/emacs-color-theme-solarized.git
-[submodule "fonts"]
-	path = fonts
-	url = https://github.com/powerline/fonts
