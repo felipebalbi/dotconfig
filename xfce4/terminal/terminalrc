@@ -1,5 +1,5 @@
 [Configuration]
-FontName=DejaVu Sans Mono for Powerline 10
+FontName=FuraMono Nerd Font Mono 14
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBellUrgent=FALSE
@@ -36,4 +36,6 @@ Encoding=UTF-8
 ScrollingUnlimited=TRUE
 MiscShowRelaunchDialog=TRUE
 MiscNewTabAdjacent=FALSE
+MiscSearchDialogOpacity=100
+MiscShowUnsafePasteDialog=TRUE
 
