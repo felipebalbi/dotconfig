@@ -84,7 +84,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # lock screen
-bindsym $mod+Control+l exec "i3lock-fancy -g -- scrot -q 50"
+bindsym $mod+Control+l exec "i3lock-fancy -p -g"
 
 # show scratchpad
 bindsym F1 scratchpad show
