@@ -1,6 +1,6 @@
 [user]
 	name = Felipe Balbi
-	email = balbif@gmail.com
+	email = felipe@balbi.sh
 [format]
 	suffix = .diff
 	numbered = auto
@@ -13,7 +13,10 @@
 	linenumber = true
 	extendedRegexp = true
 [sendemail]
-	smtpserver = /usr/bin/msmtp
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpuser = balbif@gmail.com
+	smtpencryption = tls
 	confirm = auto
 	aliasesfile = /home/balbi/.aliases
 	aliasfiletype = mutt
@@ -31,3 +34,5 @@
 	renamelimit = 2030
 [github]
 	user = felipebalbi
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
