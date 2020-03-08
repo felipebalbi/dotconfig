@@ -164,5 +164,11 @@ exec --no-startup-id dunst &
 # Bluetooth mouse
 exec --no-startup-id bluetoothctl connect EB:80:9F:01:61:5C &
 
+# Signal main window should be floating
+for_window [class="(?i)signal"] floating enable
+
+# Teams main window should be floating
+for_window [class="(?i)microsoft teams.*"] floating enable
+
 # Simics main window should be floating
 for_window [class="Simics-common"] floating enable
