@@ -34,5 +34,3 @@
 	renamelimit = 2030
 [github]
 	user = felipebalbi
-[credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
