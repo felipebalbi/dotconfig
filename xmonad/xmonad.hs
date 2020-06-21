@@ -78,7 +78,7 @@ import XMonad.Util.SpawnOnce
 ------------------------------------------------------------------------
 
 myTerminal :: String
-myTerminal      = "termonad"
+myTerminal      = "cd ~/workspace/termonad && stack exec -- termonad"
 
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
@@ -96,10 +96,10 @@ myWorkspaces :: [[Char]]
 myWorkspaces    = ["1:Web","2:Mail","3:Code","4:Chat","5","6","7","8","9"]
 
 myNormalBorderColor :: String
-myNormalBorderColor  = "#292d3e"
+myNormalBorderColor  = "#4d4d4d"
 
 myFocusedBorderColor :: String
-myFocusedBorderColor = "#e87325"
+myFocusedBorderColor = "#ff5555"
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' .
@@ -129,6 +129,9 @@ myKeys =
     -- Spawn terminal
   , ("M-<Return>", spawn (myTerminal))
 
+    -- DMenu
+  , ("M-d", spawn "dmenu_run")
+
     -- Windows
   , ("M-S-c", kill1)
   , ("M-S-a", killAll)
@@ -151,7 +154,7 @@ myKeys =
   , ("M-e", spawn "emacsclient -c -a ''")
 
     -- Scrot
-  , ("M-C-s", spawn "scrot -s /tmp/%Y-%m-%d_%H-%M-%S_%wx%h.png")
+  , ("M-C-s", spawn "sleep 0.2 && scrot -s /tmp/%Y-%m-%d_%H-%M-%S_%wx%h.png")
 
     -- Multimedia Keys
   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
@@ -202,11 +205,12 @@ myLayout = avoidStruts $ mySpacing 8 $ (tiled ||| Mirror tiled ||| Full)
 ------------------------------------------------------------------------
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
-    , className =? "Signal"         --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    [ className =? "MPlayer"                   --> doFloat
+    , className =? "Signal"                    --> doFloat
+    , className =? "microsoft teams - preview" --> doFloat
+    , className =? "Gimp"                      --> doFloat
+    , resource  =? "desktop_window"            --> doIgnore
+    , resource  =? "kdesktop"                  --> doIgnore ]
 
 ------------------------------------------------------------------------
 -- Event handling
