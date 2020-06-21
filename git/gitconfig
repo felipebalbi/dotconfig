@@ -1,6 +1,7 @@
 [user]
 	name = Felipe Balbi
 	email = felipe@balbi.sh
+	signingkey = 0x35CAA444
 [format]
 	suffix = .diff
 	numbered = auto
@@ -34,3 +35,5 @@
 	renamelimit = 2030
 [github]
 	user = felipebalbi
+[pull]
+	ff = only
