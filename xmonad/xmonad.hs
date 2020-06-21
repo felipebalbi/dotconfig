@@ -87,7 +87,7 @@ myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
 myBorderWidth :: Dimension
-myBorderWidth   = 1
+myBorderWidth   = 3
 
 myModMask :: KeyMask
 myModMask       = mod4Mask
@@ -99,7 +99,7 @@ myNormalBorderColor :: String
 myNormalBorderColor  = "#292d3e"
 
 myFocusedBorderColor :: String
-myFocusedBorderColor = "#bbc5ff"
+myFocusedBorderColor = "#e87325"
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' .
