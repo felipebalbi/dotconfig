@@ -226,7 +226,7 @@ myKeys =
   , ("M-e", spawn "emacsclient -c -a ''")
 
     -- Scrot
-  , ("M-C-s", spawn "sleep 0.2 && scrot -s /tmp/%Y-%m-%d_%H-%M-%S_%wx%h.png")
+  , ("M-C-s", spawn "sleep 0.2 && scrot -s /tmp/%Y-%m-%d_%H-%M-%S_$wx$h.png")
 
     -- Multimedia Keys
   , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
@@ -308,7 +308,7 @@ myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
     [ className =? "MPlayer"                   --> doFloat
     , className =? "Signal"                    --> doFloat
-    , className =? "microsoft teams - preview" --> doFloat
+    , className =? "Microsoft Teams - Preview" --> doFloat
     , className =? "Gimp"                      --> doFloat
     , resource  =? "desktop_window"            --> doIgnore
     , resource  =? "kdesktop"                  --> doIgnore ]
