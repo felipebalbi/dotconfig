@@ -1,4 +1,4 @@
-Config { font         = "-misc-fira code retina-medium-r-normal--*-*-*-*-*-*-*-*"
+Config { font         = "xft:Fira Code:size=12"
        , bgColor      = "#282a36"
        , fgColor      = "#b45bcf"
        , position     = Top L 100
