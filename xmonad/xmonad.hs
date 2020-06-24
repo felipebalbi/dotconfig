@@ -37,7 +37,7 @@ import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
 
 -- Layouts
-import XMonad.Layout.GridVariants (Grid(Grid))
+import XMonad.Layout.Grid
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.Spiral
 import XMonad.Layout.ResizableTile
@@ -287,10 +287,19 @@ searchList = [ ("a", archwiki)
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
-myLayout = avoidStruts $ mySpacing 8 $ (tiled ||| Mirror tiled ||| Full)
+myLayout = avoidStruts $ mySpacing 8 $ (tiled ||| Mirror tiled ||| Full ||| focus ||| three ||| grid)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
+
+     --- ThreeColumns layout
+     three   = ThreeCol nmaster delta ratio
+
+     --- ThreeColumnsMid
+     focus   = ThreeColMid nmaster delta ratio
+
+     --- Grid layout
+     grid    = GridRatio (4/3)
 
      -- The default number of windows in the master pane
      nmaster = 1
