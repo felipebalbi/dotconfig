@@ -1,5 +1,5 @@
-Config { font         = "xft:Fira Code:size=12"
-       , bgColor      = "#282a36"
+Config { font         = "xft:Fira Code:size=12:style=bold"
+       , bgColor      = "#282936"
        , fgColor      = "#b45bcf"
        , position     = Top L 100
        , lowerOnStart = True
@@ -12,6 +12,7 @@ Config { font         = "xft:Fira Code:size=12"
                                                "--normal", "green",
                                                "--high", "red",
                                                "--low", "lightblue"] 36000
+                        , Run Com "uname" ["-r"] "" 36000
                         , Run Cpu [ "-L", "3", "-H","50",
                                     "--low","green",
                                     "--normal", "orange",
@@ -27,5 +28,5 @@ Config { font         = "xft:Fira Code:size=12"
                         ]
        , sepChar      = "%"
        , alignSep     = "}{"
-       , template     = " <icon=haskell.xpm/> %StdinReader% }{ %cpu% | %wlp12s0wi% | %memory% * %swap% | <fc=#ee9a00>%date%</fc> | %EFHK%"
+       , template     = " <icon=haskell.xpm/> %StdinReader% }{ <fc=#f1fa8c>%uname%</fc> | %cpu% | %wlp12s0wi% | %memory% * %swap% | <fc=#ee9a00>%date%</fc> | %EFHK%"
        }
