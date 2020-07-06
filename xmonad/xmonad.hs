@@ -161,7 +161,7 @@ xpKeymap = M.fromList $
 
 xpConfig :: XPConfig
 xpConfig = def
-      { font                = "xft:Mononoki Nerd Font:size=9"
+      { font                = "xft:Fira Code:size=12:style=bold"
       , bgColor             = "#292d3e"
       , fgColor             = "#d0d0d0"
       , bgHLight            = "#c792ea"
@@ -202,7 +202,7 @@ myKeys =
   , ("M-<Return>", spawn (myTerminal))
 
     -- DMenu
-  , ("M-d", spawn "dmenu_run")
+  , ("M-d", spawn "dmenu_run -fn 'Fira Code:size=12:style=bold'")
 
     -- Windows
   , ("M-S-c", kill1)
