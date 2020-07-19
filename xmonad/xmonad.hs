@@ -213,6 +213,9 @@ myKeys =
     -- Screen Lock
   , ("M-C-l", spawn "xscreensaver-command -lock")
 
+    -- Suspend
+  , ("M-C-h", spawn "xscreensaver-command -lock && systemctl suspend")
+
     -- Navigation
   , ("M-f",   windows W.focusUp)
   , ("M-b",   windows W.focusDown)
