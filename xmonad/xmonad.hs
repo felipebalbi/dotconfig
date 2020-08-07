@@ -322,6 +322,9 @@ myManageHook = composeAll
     , className =? "Signal"                    --> doFloat
     , className =? "Microsoft Teams - Preview" --> doFloat
     , className =? "Gimp"                      --> doFloat
+    , className =? "obs"                       --> doFloat
+    , className =? "transmission"              --> doFloat
+    , title     =? "OtoDecks"                  --> doFloat
     , resource  =? "desktop_window"            --> doIgnore
     , resource  =? "kdesktop"                  --> doIgnore ]
 
