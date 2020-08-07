@@ -14,10 +14,11 @@
 	linenumber = true
 	extendedRegexp = true
 [sendemail]
-	smtpserver = smtp.gmail.com
-	smtpserverport = 587
-	smtpuser = balbif@gmail.com
-	smtpencryption = tls
+        smtpserver     = mail.kernel.org
+        smtpserverport = 587
+        smtpencryption = tls
+        from           = balbi@kernel.org
+        smtpuser       = balbi
 	confirm = auto
 	aliasesfile = /home/balbi/.aliases
 	aliasfiletype = mutt
@@ -25,7 +26,7 @@
 	composeencoding = UTF-8
 	assume8bitEncoding = UTF-8
 [gpg]
-	program = /usr/bin/gpg2
+	program = /usr/bin/gpg
 [fetch]
 	prune = true
 [color]
@@ -37,3 +38,5 @@
 	user = felipebalbi
 [pull]
 	ff = only
+[tag]
+	forceSignAnnotated = true
