@@ -318,10 +318,11 @@ myLayout = avoidStruts $ mySpacing 8 $ (tiled ||| Mirror tiled ||| Full ||| focu
 ------------------------------------------------------------------------
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
-    [ className =? "MPlayer"                   --> doFloat
-    , className =? "Signal"                    --> doFloat
+    [ className =? "Gimp"                      --> doFloat
+    , className =? "MPlayer"                   --> doFloat
     , className =? "Microsoft Teams - Preview" --> doFloat
-    , className =? "Gimp"                      --> doFloat
+    , className =? "Signal"                    --> doFloat
+    , className =? "Zenity"                    --> doFloat
     , className =? "obs"                       --> doFloat
     , className =? "transmission"              --> doFloat
     , title     =? "OtoDecks"                  --> doFloat
