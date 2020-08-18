@@ -8,8 +8,6 @@
 [core]
 	editor = emacs -nw
 	abbrev = 12
-#	gitproxy = none for intel.com
-#	gitproxy = /home/balbi/.local/bin/git-proxy.sh
 [grep]
 	linenumber = true
 	extendedRegexp = true
@@ -40,3 +38,5 @@
 	ff = only
 [tag]
 	forceSignAnnotated = true
+[include]
+	path = ~/.gitconfig.local
