@@ -78,7 +78,7 @@ import XMonad.Util.SpawnOnce
 ------------------------------------------------------------------------
 
 myTerminal :: String
-myTerminal      = "cd ~/workspace/termonad && stack exec -- termonad"
+myTerminal      = "alacritty"
 
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
