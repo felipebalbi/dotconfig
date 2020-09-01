@@ -112,7 +112,7 @@ myStartupHook :: X()
 myStartupHook = do
   spawnOnce "xscreensaver -no-splash &"
   spawnOnce "nitrogen --restore &"
-  spawnOnce "picom &"
+  spawnOnce "picom -b &"
   spawnOnce "volumeicon &"
   spawnOnce "emacs --daemon &"
 
