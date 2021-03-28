@@ -36,6 +36,8 @@
 	user = felipebalbi
 [pull]
 	ff = only
+[push]
+	gpgSign = if-asked
 [tag]
 	forceSignAnnotated = true
 [include]
