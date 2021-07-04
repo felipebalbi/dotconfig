@@ -3,11 +3,12 @@
 (define-configuration nyxt/web-mode:web-mode
     ((keymap-scheme (let ((scheme %slot-default%))
                       (keymap:define-key (gethash scheme:emacs scheme)
-                        "C-c p" 'copy-password
-                        "C-c y" 'autofill
-                        "C-f" 'nyxt/web-mode:history-forwards-maybe-query
-                        "C-i" 'nyxt/input-edit-mode:input-edit-mode
-                        "M-:" 'eval-expression)
+                        "C-c p"   'copy-password
+                        "C-c y"   'autofill
+                        "C-x C-u" 'set-url
+                        "C-f"     'nyxt/web-mode:history-forwards-maybe-query
+                        "C-i"     'nyxt/input-edit-mode:input-edit-mode
+                        "M-:"     'eval-expression)
                       scheme))))
 
 (define-configuration nyxt/auto-mode:auto-mode
