@@ -114,7 +114,6 @@ myStartupHook = do
   spawnOnce "nitrogen --restore &"
   spawnOnce "picom -b &"
   spawnOnce "volumeicon &"
-  spawnOnce "emacs --daemon &"
 
 ------------------------------------------------------------------------
 -- Xprompt
