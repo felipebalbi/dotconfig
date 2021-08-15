@@ -15,7 +15,7 @@
         smtpserver     = mail.kernel.org
         smtpserverport = 587
         smtpencryption = tls
-        from           = balbi@kernel.org
+        from           = Felipe Balbi <balbi@kernel.org>
         smtpuser       = balbi
 	confirm = auto
 	aliasesfile = /home/balbi/.aliases
@@ -42,3 +42,9 @@
 	forceSignAnnotated = true
 [include]
 	path = ~/.gitconfig.local
+
+[color "status"]
+	branch = magenta
+	untracked = cyan
+	unmerged = yellow
+	header = bold black
