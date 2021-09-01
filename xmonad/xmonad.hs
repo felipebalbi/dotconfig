@@ -326,7 +326,9 @@ myManageHook = composeAll
     , className =? "transmission"              --> doFloat
     , title     =? "OtoDecks"                  --> doFloat
     , resource  =? "desktop_window"            --> doIgnore
-    , resource  =? "kdesktop"                  --> doIgnore ]
+    , resource  =? "kdesktop"                  --> doIgnore
+    , isFullscreen                             --> doFullFloat
+    ]
 
 ------------------------------------------------------------------------
 -- Event handling
