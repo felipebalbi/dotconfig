@@ -93,7 +93,7 @@ myModMask :: KeyMask
 myModMask       = mod4Mask
 
 myWorkspaces :: [[Char]]
-myWorkspaces    = ["1:Web","2:Mail","3:Code","4:Chat","5","6","7","8","9"]
+myWorkspaces    = ["1:web","2:mail","3:code","4:chat","5","6","7","8","9","0"]
 
 myNormalBorderColor :: String
 myNormalBorderColor  = "#4d4d4d"
