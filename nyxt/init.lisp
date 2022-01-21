@@ -5,7 +5,10 @@
                     (nyxt-init-file "style.lisp")))
   (load file))
 
-(load-after-system :nx-kaomoji (nyxt-init-file "kaomoji.lisp"))
+(load "~/quicklisp/setup.lisp")
+(ql:quickload :slynk)
+
+;; (load-after-system :nx-kaomoji (nyxt-init-file "kaomoji.lisp"))
 (load-after-system :slynk (nyxt-init-file "slynk.lisp"))
 
 (define-configuration browser
@@ -16,11 +19,14 @@
      (download-engine :renderer)
      (current-zoom-ratio 1.25)))
 
+(define-configuration browser
+  ((external-editor-program '("emacsclient"))))
+
 (define-configuration (web-buffer nosave-buffer)
-    ((default-modes `(emacs-mode
-                      blocker-mode force-https-mode reduce-tracking-mode
-                      auto-mode
-                      ,@%slot-default%))))
+  ((default-modes `(emacs-mode
+                    blocker-mode force-https-mode reduce-tracking-mode
+                    auto-mode
+                    ,@%slot-default%))))
 
 (define-configuration prompt-buffer
     ((hide-single-source-header-p t)))
