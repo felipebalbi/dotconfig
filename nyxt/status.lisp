@@ -22,7 +22,7 @@
       ""))
 
 (defun laconic-format-status-url (buffer)
-  (markup:markup
+  (spinneret:with-html-string
    (:span
        (format nil "~a ~a"
                (laconic-format-status-load-status buffer)
@@ -41,13 +41,13 @@
                    (or (current-mode 'vi-insert)
                        (current-mode 'input-edit)))))
     (let ((buffer (current-buffer window)))
-      (markup:markup
+      (spinneret:with-html-string
        (:div :id "container"
              (:div :id "controls" :class "arrow-right"
                    :style (input-indicating-background)
-                   (markup:raw ""))
+                   (:raw ""))
              (:div :id "url" :class "arrow-right"
-                   (markup:raw
+                   (:raw
                     (laconic-format-status-url buffer)))
              (:div :id "tabs"
                    (title buffer))
