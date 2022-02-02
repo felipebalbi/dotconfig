@@ -16,9 +16,9 @@ bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F
 
 # change focus
 bindsym $mod+b focus left
-bindsym $mod+f focus down
+bindsym $mod+f focus right
 bindsym $mod+p focus up
-bindsym $mod+n focus right
+bindsym $mod+n focus down
 
 # move focused window
 bindsym $mod+Control+f move left
