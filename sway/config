@@ -158,6 +158,9 @@ bar {
   status_command while ~/.config/sway/status; do sleep 10; done
 }
 
+# Clipboard Manager
+exec wl-paste -t text --watch clipman store --no-persist
+
 # Dunst
 exec --no-startup-id dunst &
 
