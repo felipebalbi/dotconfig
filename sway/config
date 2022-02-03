@@ -3,7 +3,7 @@ set $mod Mod4
 font pango:Fira Code:size=12:style=bold
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod normal
+floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec foot
@@ -24,10 +24,10 @@ bindsym $mod+p focus up
 bindsym $mod+n focus down
 
 # move focused window
-bindsym $mod+Control+f move left
-bindsym $mod+Control+b move down
+bindsym $mod+Control+b move left
+bindsym $mod+Control+f move right
 bindsym $mod+Control+p move up
-bindsym $mod+Control+n move right
+bindsym $mod+Control+n move down
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -170,7 +170,7 @@ exec --no-startup-id bluetoothctl connect EB:80:9F:01:61:5C &
 exec --no-startup-id bluetoothctl connect F4:BC:DA:5E:9F:CB &
 
 # Signal main window should be floating
-# for_window [class="(?i)signal"] floating enable
+for_window [class="(?i)signal"] floating enable
 
 # Teams main window should be floating
 # for_window [class="(?i)microsoft teams.*"] floating enable
