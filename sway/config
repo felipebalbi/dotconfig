@@ -3,7 +3,7 @@ set $mod Mod4
 font pango:Fira Code:size=12:style=bold
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier $mod normal
 
 # start a terminal
 bindsym $mod+Return exec foot
@@ -155,7 +155,7 @@ bar {
   separator_symbol |
   font pango:Fira Code:size=12:style=bold
 
-  status_command while ~/.config/sway/status; do sleep 1; done
+  status_command while ~/.config/sway/status; do sleep 10; done
 }
 
 # Dunst
@@ -175,3 +175,9 @@ exec --no-startup-id bluetoothctl connect F4:BC:DA:5E:9F:CB &
 
 # Simics main window should be floating
 # for_window [class="Simics-common"] floating enable
+
+input "1133:16422:Logitech_T400" {
+      natural_scroll enabled
+}
+
+include /etc/sway/config.d/*
