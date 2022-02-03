@@ -158,6 +158,9 @@ bar {
   status_command while ~/.config/sway/status; do sleep 1; done
 }
 
+# Dunst
+exec --no-startup-id dunst &
+
 # Bluetooth mouse
 exec --no-startup-id bluetoothctl connect EB:80:9F:01:61:5C &
 
