@@ -150,10 +150,13 @@ bar {
     urgent_workspace   #ff5555 #ff5555 #f8f8f2
     binding_mode       #ff5555 #ff5555 #f8f8f2
   }
-}
 
-# Dunst
-exec --no-startup-id dunst &
+  position top
+  separator_symbol |
+  font pango:Fira Code:size=12:style=bold
+
+  status_command while ~/.config/sway/status; do sleep 1; done
+}
 
 # Bluetooth mouse
 exec --no-startup-id bluetoothctl connect EB:80:9F:01:61:5C &
@@ -162,10 +165,10 @@ exec --no-startup-id bluetoothctl connect EB:80:9F:01:61:5C &
 exec --no-startup-id bluetoothctl connect F4:BC:DA:5E:9F:CB &
 
 # Signal main window should be floating
-for_window [class="(?i)signal"] floating enable
+# for_window [class="(?i)signal"] floating enable
 
 # Teams main window should be floating
-for_window [class="(?i)microsoft teams.*"] floating enable
+# for_window [class="(?i)microsoft teams.*"] floating enable
 
 # Simics main window should be floating
-for_window [class="Simics-common"] floating enable
+# for_window [class="Simics-common"] floating enable

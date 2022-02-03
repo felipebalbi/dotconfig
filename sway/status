@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+
+date_output=$(date "+%a %F %H:%M")
+kernel_version=$(uname -r)
+
+echo "🖳 $kernel_version 📅 $date_output"
