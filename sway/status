@@ -2,5 +2,7 @@
 
 date_output=$(date "+%a %F %H:%M")
 kernel_version=$(uname -r)
+wifi=$(iw dev wlp12s0 link | grep 'dBm$' | awk '{ print $2 }')
+weather=$(curl -Ss 'https://wttr.in?format=1')
 
-echo "🖳 $kernel_version 📅 $date_output"
+echo "💻 $kernel_version | 📶 $wifi dBm | $weather | 📅 $date_output"
