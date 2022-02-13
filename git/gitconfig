@@ -36,8 +36,8 @@
 	user = felipebalbi
 [pull]
 	ff = only
-[push]
-	gpgSign = if-asked
+# [push]
+# 	gpgSign = if-asked
 [tag]
 	forceSignAnnotated = true
 [include]
@@ -48,3 +48,7 @@
 	untracked = cyan
 	unmerged = yellow
 	header = bold black
+[credential]
+	helper = store
+[init]
+	defaultBranch = master
