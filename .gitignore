@@ -4,3 +4,5 @@
 *.hi
 *.o
 /xmonad/prompt-history
+/guix/current
+/guix/nonguix-key.pub
