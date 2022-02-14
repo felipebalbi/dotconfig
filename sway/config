@@ -182,6 +182,10 @@ input "1133:16422:Logitech_T400" {
       natural_scroll enabled
 }
 
+input "1739:0:Synaptics_tm2962-001" {
+      natural_scroll enabled
+}
+
 output * scale 1
 
 include /etc/sway/config.d/*
