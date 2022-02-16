@@ -24,7 +24,7 @@
     (specification->package "gcc-toolchain")
     (specification->package "gdb")
     (specification->package "git")
-    (specification->package "git:send-email")
+    (specification->package+output "git" "send-email")
     (specification->package "nss-certs")
     (specification->package "nyxt")
     (specification->package "openssh")
