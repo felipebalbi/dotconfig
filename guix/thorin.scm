@@ -1,15 +1,7 @@
-(use-modules (gnu)
-             (gnu packages curl)
-             (gnu packages ssh)
-	     (gnu packages suckless)
-	     (nongnu packages linux)
-             (nongnu system linux-initrd))
+(use-modules (gnu))
 
-(use-package-modules emacs
-                     terminals
-                     version-control
-                     xorg
-                     wm)
+(use-modules (nongnu packages linux)
+             (nongnu system linux-initrd))
 
 (use-service-modules cups
                      desktop
@@ -17,32 +9,40 @@
                      ssh
                      xorg)
 
+(use-package-modules emacs
+                     fonts
+                     terminals
+                     version-control
+                     wm)
+
 (define %thorin-packages
   (append
    (list
+    (specification->package "emacs")
+    (specification->package "font-dejavu")
+    (specification->package "font-fira-code")
+    (specification->package "gcc-toolchain")
+    (specification->package "gdb")
+    (specification->package "git")
+    (specification->package "git:send-email")
     (specification->package "nss-certs")
-    curl
-    dmenu
-    emacs
-    foot
-    glibc-locales
-    openssh
-    sway
-    swaybg
-    swayidle
-    swaylock
-    waybar
-    xorg-server-xwayland)
+    (specification->package "nyxt")
+    (specification->package "openssh")
+    (specification->package "sbcl-stumpwm-cpu")
+    (specification->package "sbcl-stumpwm-net")
+    (specification->package "sbcl-stumpwm-pass")
+    (specification->package "sbcl-stumpwm-ttf-fonts")
+    (specification->package "sbcl-stumpwm-wifi")
+    (specification->package "st")
+    (specification->package "stumpwm-with-slynk"))
    %base-packages))
 
 (define %thorin-services
   (append
-   (list (service connman-service-type)
-         (service wpa-supplicant-service-type)
-         (service cups-service-type)
-	 (service elogind-service-type))
+   (list (service connman-service-type))
    (modify-services
-    %base-services
+    %desktop-services
+    (delete network-manager-service-tyhpe)
     (guix-service-type config =>
                        (guix-configuration
                         (inherit config)
