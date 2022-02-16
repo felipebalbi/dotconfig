@@ -54,9 +54,9 @@
                                   (plain-file
                                    "non-guix.pub"
                                    "(public-key
-                                    (ecc
-                                     (curve Ed25519)
-                                     (q #C1FD53E5D4CE971933EC50C9F307AE2171A2D3B52C804642A7A35F84F3A4EA98#)))"))
+                                     (ecc
+                                      (curve Ed25519)
+                                      (q #C1FD53E5D4CE971933EC50C9F307AE2171A2D3B52C804642A7A35F84F3A4EA98#)))"))
                                  %default-authorized-guix-keys)))))))
 
 (operating-system
@@ -89,13 +89,13 @@
  (swap-devices
   (list (swap-space
          (target
-          (uuid "c32ed90c-4ff8-4893-a9cf-da1214e82dc4")))))
+          (uuid "636bac8e-8d9e-4896-afb9-99b45ca2d9d1")))))
 
  (file-systems
   (cons* (file-system
           (mount-point "/")
           (device
-           (uuid "6bbd30d2-c1af-4559-b605-7c7d9b29606e"
+           (uuid "fc58cf5f-2235-4812-bd61-0aedb5067a54"
                  'ext4))
           (type "ext4"))
          %base-file-systems)))
