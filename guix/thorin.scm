@@ -42,7 +42,7 @@
    (list (service connman-service-type))
    (modify-services
     %desktop-services
-    (delete network-manager-service-tyhpe)
+    (delete network-manager-service-type)
     (guix-service-type config =>
                        (guix-configuration
                         (inherit config)
