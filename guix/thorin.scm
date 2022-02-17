@@ -28,14 +28,16 @@
     (specification->package "nss-certs")
     (specification->package "nyxt")
     (specification->package "openssh")
+    (specification->package "sbcl")
+    (specification->package "sbcl-slynk")
     (specification->package "sbcl-stumpwm-cpu")
     (specification->package "sbcl-stumpwm-net")
     (specification->package "sbcl-stumpwm-pass")
     (specification->package "sbcl-stumpwm-ttf-fonts")
     (specification->package "sbcl-stumpwm-wifi")
-    (specification->package "sbcl-slynk")
     (specification->package "st")
-    (specification->package "stumpwm"))
+    (specification->package "stumpwm-with-slynk")
+    (specification->package "xsetroot"))
    %base-packages))
 
 (define %thorin-services
