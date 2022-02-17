@@ -21,7 +21,12 @@
         "#f8f8f2"                    ; Foreground
         "#bd93f9"                    ; Purple
         "#44475a"                    ; Current Line
+        "#ffb86c"                    ; Orange
         ))
+
+(update-color-map (current-screen))
+
+(setf *window-format* "%m%s%50t")
 
 (defparameter *mode-line-bg-color* (nth 0 *colors*))
 (defparameter *mode-line-fg-color* (nth 7 *colors*))
