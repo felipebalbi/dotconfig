@@ -33,8 +33,9 @@
     (specification->package "sbcl-stumpwm-pass")
     (specification->package "sbcl-stumpwm-ttf-fonts")
     (specification->package "sbcl-stumpwm-wifi")
+    (specification->package "sbcl-slynk")
     (specification->package "st")
-    (specification->package "stumpwm-with-slynk"))
+    (specification->package "stumpwm"))
    %base-packages))
 
 (define %thorin-services
