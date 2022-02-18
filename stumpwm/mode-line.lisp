@@ -1,3 +1,7 @@
+;; Wifi module
+(setf wifi:*iwconfig-path* "/run/current-system/profile/sbin/iwconfig")
+(setf wifi:*wifi-modeline-fmt* "%e: %p")
+
 ;; Set modeline format
 (setf stumpwm:*screen-mode-line-format*
       (list "^5[%g]^n "                 ; Groups
@@ -5,7 +9,7 @@
             "^>"                        ; Right Align
             "%S | "                     ; Slynk Status
             "%C | "                     ; CPU
-            "%l | "                     ; Wifi
+            "%I | "                     ; Wifi
             "%B | "                     ; Battery %
             "%d"                        ; time and Date
             ))
