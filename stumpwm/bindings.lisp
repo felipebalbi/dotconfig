@@ -5,7 +5,7 @@
   (loop for (key . cmd) in alist
         do (define-key map (kbd key) cmd)))
 
-(defparameter *my/bindings*
+(defparameter *fb/top-map*
   '(("s-RET" . "exec st")
 
     ("s-b"   . "move-focus left")
@@ -36,8 +36,9 @@
     ("s-0"   . "gselect 10")
 
     ("s-e"   . "exec emacs")
+    ("s-B"   . "exec nyxt")
 
     ("s-!"   . "exec")
     ))
 
-(define-keys *top-map* *my/bindings*)
+(define-keys *top-map* *fb/top-map*)
