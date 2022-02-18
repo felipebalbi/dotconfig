@@ -18,6 +18,7 @@
 (define %thorin-packages
   (append
    (list
+    (specification->package "curl")
     (specification->package "emacs")
     (specification->package "font-dejavu")
     (specification->package "font-fira-code")
