@@ -1,2 +1,13 @@
+(in-package :stumpwm)
+
+;; Must be the first
 (load "~/.config/stumpwm/init.lisp")
+
 (load "~/.config/stumpwm/bindings.lisp")
+(load "~/.config/stumpwm/colors.lisp")
+(load "~/.config/stumpwm/workspaces.lisp")
+(load "~/.config/stumpwm/battery.lisp")
+(load "~/.config/stumpwm/slynk.lisp")
+
+;; Must be the last
+(load "~/.config/stumpwm/mode-line")

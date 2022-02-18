@@ -1,3 +1,6 @@
+;; Change default prefix key
+(set-prefix-key (kbd "s-x"))
+
 (defun define-keys (map alist)
   (loop for (key . cmd) in alist
         do (define-key map (kbd key) cmd)))
