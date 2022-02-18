@@ -32,3 +32,6 @@
 ;; Message and Input bar settings
 (set-msg-border-width 3)
 (setf *message-window-padding* 5)
+
+(setf *window-border-style* :thin)
+(setf *normal-border-width* 1)
