@@ -8,6 +8,7 @@
 (load "~/.config/stumpwm/workspaces.lisp")
 (load "~/.config/stumpwm/battery.lisp")
 (load "~/.config/stumpwm/slynk.lisp")
+(load "~/.config/stumpwm/font.lisp")
 
 ;; Must be the last
 (load "~/.config/stumpwm/mode-line")
