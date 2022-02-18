@@ -3,6 +3,7 @@
 ;; Must be the first
 (load "~/.config/stumpwm/init.lisp")
 
+(load "~/.config/stumpwm/modules.lisp")
 (load "~/.config/stumpwm/bindings.lisp")
 (load "~/.config/stumpwm/colors.lisp")
 (load "~/.config/stumpwm/workspaces.lisp")

@@ -5,7 +5,7 @@
                     '(#\newline #\linefeed #\return)
                     (with-open-file (s "/sys/class/power_supply/BAT0/capacity")
                       (read-line s)))))
-    (setf *battery-percent* (format nil "^2 ~a%^n " capacity))))
+    (setf *battery-percent* (format nil "BAT:^5 ~a%^n " capacity))))
 
 (defun ml-fmt-battery-percentage (ml)
   (declare (ignore ml))

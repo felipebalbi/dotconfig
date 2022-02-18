@@ -1,0 +1,10 @@
+(add-to-load-path "/run/current-system/profile/share/common-lisp/sbcl/stumpwm-cpu")
+(add-to-load-path "/run/current-system/profile/share/common-lisp/sbcl/stumpwm-net")
+(add-to-load-path "/run/current-system/profile/share/common-lisp/sbcl/stumpwm-pass")
+(add-to-load-path "/run/current-system/profile/share/common-lisp/sbcl/stumpwm-ttf-fonts")
+(add-to-load-path "/run/current-system/profile/share/common-lisp/sbcl/stumpwm-wifi")
+
+(load-module "cpu")
+(load-module "net")
+(load-module "pass")
+(load-module "wifi")

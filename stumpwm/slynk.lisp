@@ -33,7 +33,7 @@ Type^2 (in-package :stumpwm)^n in Sly REPL." *port-number*))))
 
 (defun get-slynk-status ()
   (if *slynk-server-p*
-      (setf *slynk-ml-status* (format nil "Slynk Port:^5 ~a^n " *port-number*))
+      (setf *slynk-ml-status* (format nil "Slynk:^5 ~a^n " *port-number*))
       (setf *slynk-ml-status* "")))
 
 (defun ml-fmt-slynk-status (ml)

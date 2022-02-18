@@ -3,8 +3,10 @@
       (list "^5[%g]^n "                 ; Groups
             "%W"                        ; Windows
             "^>"                        ; Right Align
-            "%S"                        ; Slynk Status
-            "%B"                        ; Battery %
+            "%S | "                     ; Slynk Status
+            "%C | "                     ; CPU
+            "%l | "                     ; Wifi
+            "%B | "                     ; Battery %
             "%d"                        ; time and Date
             ))
 
