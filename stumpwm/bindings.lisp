@@ -36,6 +36,8 @@
     ("s-0"   . "gselect 10")
 
     ("s-e"   . "exec emacs")
+
+    ("s-!"   . "exec")
     ))
 
 (define-keys *top-map* *my/bindings*)
