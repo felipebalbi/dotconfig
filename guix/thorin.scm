@@ -39,6 +39,7 @@
     (specification->package "sbcl-stumpwm-wifi")
     (specification->package "st")
     (specification->package "stumpwm-with-slynk")
+    (specification->package+output "stumpwm" "lib")
     (specification->package "xsetroot"))
    %base-packages))
 
