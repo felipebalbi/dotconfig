@@ -42,3 +42,13 @@
     ))
 
 (define-keys *top-map* *fb/top-map*)
+
+(defparameter *fb/root-map*
+  '(("3" . "hsplit")
+    ("2" . "vsplit")
+    ("1" . "only")
+    ("n" . "pull-hidden-next")
+    ("p" . "pull-hidden-previous")
+    ))
+
+(define-keys *root-map* *fb/root-map*)
