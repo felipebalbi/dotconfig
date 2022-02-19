@@ -49,6 +49,7 @@
     ("1" . "only")
     ("n" . "pull-hidden-next")
     ("p" . "pull-hidden-previous")
+    ("x" . *exchange-window-map*)
     ))
 
 (define-keys *root-map* *fb/root-map*)
