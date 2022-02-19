@@ -22,7 +22,7 @@ Type^2 (in-package :stumpwm)^n in Sly REPL." *port-number*))))
   "Stop Slynk server"
   (slynk:stop-server *port-number*)
   (setf *slynk-server-p* nil)
-  (message "Stopping Slynk serve! Closing Port^5 ~a^n." *port-number*))
+  (message "Stopping Slynk server! Closing Port^5 ~a^n." *port-number*))
 
 (defcommand toggle-slynk () ()
   (if *slynk-server-p*
