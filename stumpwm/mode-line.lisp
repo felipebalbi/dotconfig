@@ -2,12 +2,28 @@
 (setf wifi:*iwconfig-path* "/run/current-system/profile/sbin/iwconfig")
 (setf wifi:*wifi-modeline-fmt* "%e: %p")
 
+;; Show kernel version
+(defparameter *kernel-version* "")
+
+(defun get-kernel-version ()
+  (let ((version (string-trim
+                  '(#\newline #\linefeed #\return)
+                  (run-shell-command "uname -r" t))))
+    (setf *kernel-version* (format nil "Kernel:^3 ~a^n" version))))
+
+(defun ml-fmt-kernel-version (ml)
+  (declare (ignore ml))
+  *kernel-version*)
+
+(add-screen-mode-line-formatter #\K #'ml-fmt-kernel-version)
+
 ;; Set modeline format
 (setf stumpwm:*screen-mode-line-format*
       (list "^5[%g]^n "                 ; Groups
             "%W"                        ; Windows
             "^>"                        ; Right Align
             "%S | "                     ; Slynk Status
+            "%K | "                     ; Kernel Version
             "%C | "                     ; CPU
             "%I | "                     ; Wifi
             "%B | "                     ; Battery %
