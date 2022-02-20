@@ -3,18 +3,20 @@
 (setf wifi:*wifi-modeline-fmt* "%e: %p")
 
 ;; Show kernel version
-(defparameter *kernel-version* "")
+(defparameter *kernel-version* nil)
 
 (defun get-kernel-version ()
-  (let ((version (string-trim
-                  '(#\newline #\linefeed #\return)
-                  (run-shell-command "uname -r" t))))
-    (setf *kernel-version* (format nil "Kernel:^3 ~a^n" version))))
+  (if (null *kernel-version*)
+      (let ((version (string-trim
+                      '(#\newline #\linefeed #\return)
+                      (run-shell-command "uname -r" t))))
+        (setf *kernel-version* (format nil "Kernel:^3 ~a^n" version)))))
 
 (defun ml-fmt-kernel-version (ml)
   (declare (ignore ml))
   *kernel-version*)
 
+(run-with-timer 0 nil #'get-kernel-version)
 (add-screen-mode-line-formatter #\K #'ml-fmt-kernel-version)
 
 ;; Set modeline format
