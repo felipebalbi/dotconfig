@@ -43,6 +43,14 @@
     (specification->package "xsetroot"))
    %base-packages))
 
+(define %thorin-xorg-libinput-config
+  "Section \"InputClass\"
+     Identifier		\"Touchpad\"
+     MatchIsTouchpad	\"on\"
+     Driver		\"libinput\"
+     Option		\"NaturalScrolling\" \"1\"
+   EndSection")
+
 (define %thorin-services
   (append
    (list (service connman-service-type))
@@ -63,7 +71,12 @@
                                      (ecc
                                       (curve Ed25519)
                                       (q #C1FD53E5D4CE971933EC50C9F307AE2171A2D3B52C804642A7A35F84F3A4EA98#)))"))
-                                 %default-authorized-guix-keys)))))))
+                                 %default-authorized-guix-keys))))
+    (gdm-service-type config =>
+                 (gdm-configuration
+                  (xorg-configuration
+                   (xorg-configuration
+                    (extra-config (list %thorin-xorg-libinput-config)))))))))
 
 (operating-system
  (kernel linux)
