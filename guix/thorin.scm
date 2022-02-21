@@ -40,6 +40,7 @@
     (specification->package "st")
     (specification->package "stumpwm-with-slynk")
     (specification->package+output "stumpwm" "lib")
+    (specification->package "xinput")
     (specification->package "xsetroot"))
    %base-packages))
 
