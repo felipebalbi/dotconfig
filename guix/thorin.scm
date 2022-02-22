@@ -20,6 +20,7 @@
    (list
     (specification->package "curl")
     (specification->package "emacs")
+    (specification->package "ffmpeg")
     (specification->package "font-dejavu")
     (specification->package "font-fira-code")
     (specification->package "gcc-toolchain")
@@ -30,6 +31,10 @@
     (specification->package "nss-certs")
     (specification->package "nyxt")
     (specification->package "openssh")
+    (specification->package "pcsc-lite")
+    (specification->package "picocom")
+    (specification->package "pinentry-emacs")
+    (specification->package "pinentry-tty")
     (specification->package "sbcl")
     (specification->package "sbcl-slynk")
     (specification->package "sbcl-stumpwm-cpu")
