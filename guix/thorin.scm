@@ -32,6 +32,7 @@
     (specification->package "nss-certs")
     (specification->package "nyxt")
     (specification->package "openssh")
+    (specification->package "pamixer")
     (specification->package "pcsc-lite")
     (specification->package "picocom")
     (specification->package "pinentry-emacs")
