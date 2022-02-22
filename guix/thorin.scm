@@ -98,7 +98,7 @@
                 (group "users")
                 (home-directory "/home/balbi")
                 (supplementary-groups
-                 '("wheel" "netdev" "audio" "video")))
+                 '("wheel" "netdev" "audio" "video" "dialout")))
                %base-user-accounts))
 
  (packages %thorin-packages)
