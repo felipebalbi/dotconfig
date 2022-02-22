@@ -28,6 +28,7 @@
     (specification->package "git")
     (specification->package+output "git" "send-email")
     (specification->package "gnupg")
+    (specification->package "mpv")
     (specification->package "nss-certs")
     (specification->package "nyxt")
     (specification->package "openssh")
