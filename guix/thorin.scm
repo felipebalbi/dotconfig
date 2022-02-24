@@ -31,6 +31,7 @@
     (specification->package "mpv")
     (specification->package "nss-certs")
     (specification->package "nyxt")
+    (specification->package "obs")
     (specification->package "openssh")
     (specification->package "pamixer")
     (specification->package "pcsc-lite")
@@ -48,6 +49,7 @@
     (specification->package "stumpwm-with-slynk")
     (specification->package+output "stumpwm" "lib")
     (specification->package "xinput")
+    (specification->package "xrandr")
     (specification->package "xsetroot"))
    %base-packages))
 
