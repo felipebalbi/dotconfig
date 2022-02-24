@@ -38,6 +38,7 @@
     (specification->package "picocom")
     (specification->package "pinentry-emacs")
     (specification->package "pinentry-tty")
+    (specification->package "python")
     (specification->package "sbcl")
     (specification->package "sbcl-slynk")
     (specification->package "sbcl-stumpwm-cpu")
