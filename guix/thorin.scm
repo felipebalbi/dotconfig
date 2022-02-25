@@ -34,6 +34,7 @@
     (specification->package "obs")
     (specification->package "openssh")
     (specification->package "pamixer")
+    (specification->package "password-store")
     (specification->package "pcsc-lite")
     (specification->package "picocom")
     (specification->package "pinentry-emacs")
