@@ -6,6 +6,7 @@
 (use-service-modules cups
                      desktop
                      networking
+                     security-token
                      ssh
                      xorg)
 
@@ -35,7 +36,6 @@
     (specification->package "openssh")
     (specification->package "pamixer")
     (specification->package "password-store")
-    (specification->package "pcsc-lite")
     (specification->package "picocom")
     (specification->package "pinentry-emacs")
     (specification->package "pinentry-tty")
@@ -65,7 +65,8 @@
 
 (define %thorin-services
   (append
-   (list (service connman-service-type))
+   (list (service connman-service-type)
+         (service pcscd-service-type))
    (modify-services
     %desktop-services
     (delete network-manager-service-type)
