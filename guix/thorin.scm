@@ -6,6 +6,7 @@
 (use-service-modules cups
                      desktop
                      networking
+                     pm
                      security-token
                      ssh
                      xorg)
@@ -29,6 +30,7 @@
     (specification->package "git")
     (specification->package+output "git" "send-email")
     (specification->package "gnupg")
+    (specification->package "icecat")
     (specification->package "mpv")
     (specification->package "nss-certs")
     (specification->package "nyxt")
@@ -66,7 +68,14 @@
 (define %thorin-services
   (append
    (list (service connman-service-type)
-         (service pcscd-service-type))
+         (service pcscd-service-type)
+         (service tlp-service-type
+                  (tlp-configuration
+                   (cpu-scaling-governor-on-ac (list "performance"))
+                   (cpu-scaling-governor-on-bat (list "powersave"))
+                   (ahci-runtime-pm-on-ac? #t)
+                   (ahci-runtime-pm-on-bat? #t)
+                   (sched-powersave-on-bat? #t))))
    (modify-services
     %desktop-services
     (delete network-manager-service-type)
