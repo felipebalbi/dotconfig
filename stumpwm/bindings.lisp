@@ -17,11 +17,13 @@
 
 (defcommand brightness-down () ()
   "Reduce screen brightness by 5%"
-  (run-shell-command "brightnessctl s 5%-"))
+  (run-shell-command "brightnessctl s 5%-")
+  (update-brightness-level))
 
 (defcommand brightness-up () ()
   "Increase screen brightness by 5%"
-  (run-shell-command "brightnessctl s 5%+"))
+  (run-shell-command "brightnessctl s 5%+")
+  (update-brightness-level))
 
 (defun define-keys (map alist)
   (loop for (key . cmd) in alist

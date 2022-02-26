@@ -24,7 +24,7 @@
 ;; Brightness
 (defparameter *brightness-level* 0)
 
-(defun get-brightness-level ()
+(defun update-brightness-level ()
   (let* ((max (parse-integer (run-shell-command "brightnessctl m" t)))
          (cur (parse-integer (run-shell-command "brightnessctl g" t)))
          (level (/ (float cur) (float max)))
@@ -36,7 +36,7 @@
   (declare (ignore ml))
   *brightness-level*)
 
-(run-with-timer 0 5 #'get-brightness-level)
+(run-with-timer 0 nil #'update-brightness-level)
 (add-screen-mode-line-formatter #\Z #'ml-fmt-brightness-level)
 
 ;; Set modeline format
