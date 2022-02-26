@@ -13,6 +13,14 @@
   "Toggle mute"
   (run-shell-command "pamixer -t"))
 
+(defcommand brightness-down () ()
+  "Reduce screen brightness by 5%"
+  (run-shell-command "brightnessctl s 5%-"))
+
+(defcommand brightness-up () ()
+  "Increase screen brightness by 5%"
+  (run-shell-command "brightnessctl s 5%+"))
+
 (defun define-keys (map alist)
   (loop for (key . cmd) in alist
         do (define-key map (kbd key) cmd)))
@@ -58,6 +66,12 @@
              . "volume-down")
     ("XF86AudioMute"
              . "volume-mute")
+
+    ("XF86MonBrightnessDown"
+             . "brightness-down")
+    ("XF86MonBrightnessUp"
+             . "brightness-up")
+
     ))
 
 (define-keys *top-map* *fb/top-map*)

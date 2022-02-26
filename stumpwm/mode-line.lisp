@@ -19,12 +19,31 @@
 (run-with-timer 0 nil #'get-kernel-version)
 (add-screen-mode-line-formatter #\K #'ml-fmt-kernel-version)
 
+;; Brightness
+(defparameter *brightness-level* 0)
+
+(defun get-brightness-level ()
+  (let* ((max (parse-integer (run-shell-command "brightnessctl m" t)))
+         (cur (parse-integer (run-shell-command "brightnessctl g" t)))
+         (level (/ (float cur) (float max)))
+         (percentage (round (* 100 level))))
+    (setf *brightness-level*
+          (format nil "Bright:^3 ~d%^n" percentage))))
+
+(defun ml-fmt-brightness-level (ml)
+  (declare (ignore ml))
+  *brightness-level*)
+
+(run-with-timer 0 5 #'get-brightness-level)
+(add-screen-mode-line-formatter #\Z #'ml-fmt-brightness-level)
+
 ;; Set modeline format
 (setf stumpwm:*screen-mode-line-format*
       (list "^5[%g]^n "                 ; Groups
             "%W"                        ; Windows
             "^>"                        ; Right Align
             "%S | "                     ; Slynk Status
+            "%Z | "                     ; Brightness
             "%K | "                     ; Kernel Version
             "%C | "                     ; CPU
             "%I | "                     ; Wifi
