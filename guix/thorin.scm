@@ -20,6 +20,7 @@
 (define %thorin-packages
   (append
    (list
+    (specification->package "brightnessctl")
     (specification->package "curl")
     (specification->package "emacs")
     (specification->package "ffmpeg")
