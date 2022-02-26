@@ -1,3 +1,5 @@
+(in-package :fb-stumpwm)
+
 ;; Slynk Settings
 (require :slynk)
 

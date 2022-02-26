@@ -1,3 +1,5 @@
+(in-package :fb-stumpwm)
+
 ;; Wifi module
 (setf wifi:*iwconfig-path* "/run/current-system/profile/sbin/iwconfig")
 (setf wifi:*wifi-modeline-fmt* "%e: %p")

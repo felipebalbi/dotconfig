@@ -1,4 +1,7 @@
-(in-package :stumpwm)
+(in-package :cl-user)
+(defpackage :fb-stumpwm
+  (:use :cl :stumpwm))
+(in-package :fb-stumpwm)
 
 ;; Must be the first
 (load "~/.config/stumpwm/init.lisp")

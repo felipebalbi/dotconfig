@@ -1,3 +1,5 @@
+(in-package :fb-stumpwm)
+
 (require :ttf-fonts)
 
 (setf xft:*font-dirs* '("/run/current-system/profile/share/fonts/"))

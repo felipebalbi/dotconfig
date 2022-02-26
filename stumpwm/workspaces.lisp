@@ -1,3 +1,5 @@
+(in-package :fb-stumpwm)
+
 ;; Create 4 workspaces. First one selected by default
 (grename "dev")
 (gnewbg "web")

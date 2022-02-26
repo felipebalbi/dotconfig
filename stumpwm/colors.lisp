@@ -1,3 +1,5 @@
+(in-package :fb-stumpwm)
+
 ;; Dracula Colors
 (setf *colors*
       '("#282a36"                    ; Background

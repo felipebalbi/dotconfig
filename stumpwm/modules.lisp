@@ -1,3 +1,5 @@
+(in-package :fb-stumpwm)
+
 (add-to-load-path "/run/current-system/profile/share/common-lisp/sbcl/stumpwm-cpu")
 (add-to-load-path "/run/current-system/profile/share/common-lisp/sbcl/stumpwm-net")
 (add-to-load-path "/run/current-system/profile/share/common-lisp/sbcl/stumpwm-pass")

@@ -1,3 +1,5 @@
+(in-package :fb-stumpwm)
+
 ;; Change default prefix key
 (set-prefix-key (kbd "s-x"))
 

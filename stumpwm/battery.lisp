@@ -1,3 +1,5 @@
+(in-package :fb-stumpwm)
+
 (defparameter *battery-percent* "")
 
 (defun get-battery-status ()
