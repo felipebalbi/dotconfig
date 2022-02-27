@@ -7,5 +7,10 @@
                                                  "/.fonts/font-cache.sexp"))
 (xft:cache-fonts)
 
-(set-font (make-instance 'xft:font :family "Fira Code"
-                                   :subfamily "Regular" :size 11))
+(set-font (list
+           (make-instance 'xft:font :family "Fira Code"
+                                    :subfamily "Regular" :size 11)
+           (make-instance 'xft:font :family "Material Icons"
+                                    :subfamily "Regular" :size 11)
+           (make-instance 'xft:font :family "Noto Emoji"
+                                    :subfamily "Regular" :size 11)))
