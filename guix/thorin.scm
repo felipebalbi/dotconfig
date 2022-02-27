@@ -26,6 +26,8 @@
     (specification->package "ffmpeg")
     (specification->package "font-dejavu")
     (specification->package "font-fira-code")
+    (specification->package "font-google-material-design-icons")
+    (specification->package "font-google-noto")
     (specification->package "gcc-toolchain")
     (specification->package "gdb")
     (specification->package "git")
