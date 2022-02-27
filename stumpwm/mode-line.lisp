@@ -39,9 +39,15 @@
 (run-with-timer 0 nil #'update-brightness-level)
 (add-screen-mode-line-formatter #\Z #'ml-fmt-brightness-level)
 
+;; Set group-format
+(setf *group-format* "^[^(:fg \"#ff79c6\")^f2%n%s%t^f0^n^]")
+
+;; Better mode line hightlight template
+(setf *mode-line-highlight-template* "^[^(:bg \"#44475a\")~A^(:bg 0)^]")
+
 ;; Set modeline format
 (setf stumpwm:*screen-mode-line-format*
-      (list "^5[%g]^n "                 ; Groups
+      (list "[%g] "                     ; Groups
             "%W"                        ; Windows
             "^>"                        ; Right Align
             "%S | "                     ; Slynk Status
