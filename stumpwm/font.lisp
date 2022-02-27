@@ -7,5 +7,5 @@
                                                  "/.fonts/font-cache.sexp"))
 (xft:cache-fonts)
 
-(set-font (make-instance 'xft:font :family "Fira Code Retina"
+(set-font (make-instance 'xft:font :family "Fira Code"
                                    :subfamily "Regular" :size 11))
