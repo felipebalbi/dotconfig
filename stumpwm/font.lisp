@@ -12,5 +12,7 @@
                                     :subfamily "Regular" :size 11)
            (make-instance 'xft:font :family "Material Icons"
                                     :subfamily "Regular" :size 11)
+           (make-instance 'xft:font :family "Fira Code"
+                                    :subfamily "Bold" :size 11)
            (make-instance 'xft:font :family "Noto Emoji"
                                     :subfamily "Regular" :size 11)))
