@@ -30,7 +30,7 @@
          (level (/ (float cur) (float max)))
          (percentage (round (* 100 level))))
     (setf *brightness-level*
-          (format nil "Bright:^3 ~d%^n" percentage))))
+          (format nil "Bright:^2 ~d%^n" percentage))))
 
 (defun ml-fmt-brightness-level (ml)
   (declare (ignore ml))
