@@ -54,7 +54,7 @@
             ))
 
 ;; Mode line time format
-(setf *time-modeline-string* "%H:%M")
+(setf *time-modeline-string* "%Y-%m-%d %H:%M")
 
 ;; Better modeline styling
 (setf *mode-line-border-width* 1)
