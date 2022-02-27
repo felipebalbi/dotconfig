@@ -2,7 +2,7 @@
 
 ;; Wifi module
 (setf wifi:*iwconfig-path* "/run/current-system/profile/sbin/iwconfig")
-(setf wifi:*wifi-modeline-fmt* "%e: %p")
+(setf wifi:*wifi-modeline-fmt* "^f1^f0 %e (%p)")
 
 ;; Show kernel version
 (defparameter *kernel-version* nil)
@@ -30,7 +30,7 @@
          (level (/ (float cur) (float max)))
          (percentage (round (* 100 level))))
     (setf *brightness-level*
-          (format nil "Bright:^2 ~d%^n" percentage))))
+          (format nil "^f1^f0^2 ~d%^n" percentage))))
 
 (defun ml-fmt-brightness-level (ml)
   (declare (ignore ml))
@@ -45,16 +45,16 @@
             "%W"                        ; Windows
             "^>"                        ; Right Align
             "%S | "                     ; Slynk Status
-            "%Z | "                     ; Brightness
             "%K | "                     ; Kernel Version
             "%C | "                     ; CPU
+            "%Z | "                     ; Brightness
             "%I | "                     ; Wifi
             "%B | "                     ; Battery %
             "%d"                        ; time and Date
             ))
 
 ;; Mode line time format
-(setf *time-modeline-string* "%Y-%m-%d %H:%M")
+(setf *time-modeline-string* "^f1^f0 %Y-%m-%d %H:%M")
 
 ;; Better modeline styling
 (setf *mode-line-border-width* 1)
