@@ -29,6 +29,7 @@
   nyxt
   obs
   pamixer
+  pass-otp
   password-store
   picocom
   pinentry-emacs
