@@ -14,6 +14,7 @@
  rust
  rust-apps
  terminals
+ version-control
  video
  web-browsers
  xorg)
@@ -22,6 +23,11 @@
  (list
   curl
   ffmpeg
+  git
+  (list git "send-email")
+  (list git "credential-netrc")
+  (list git "credential-libsecret")
+  (list git "subtree")
   gnupg
   guile-hall
   icecat

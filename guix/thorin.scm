@@ -14,7 +14,6 @@
 (use-package-modules emacs
                      fonts
                      terminals
-                     version-control
                      wm)
 
 (define %thorin-packages
@@ -28,8 +27,6 @@
     (specification->package "font-google-noto")
     (specification->package "gcc-toolchain")
     (specification->package "gdb")
-    (specification->package "git")
-    (specification->package+output "git" "send-email")
     (specification->package "nss-certs")
     (specification->package "nyxt")
     (specification->package "openssh")
