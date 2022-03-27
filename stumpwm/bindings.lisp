@@ -62,6 +62,8 @@
     ("s-e"   . "exec emacs")
     ("s-B"   . "exec nyxt")
 
+    ("s-C-l" . "exec xscreensaver-command -lock")
+
     ("s-!"   . "exec")
 
     ("XF86AudioRaiseVolume"
