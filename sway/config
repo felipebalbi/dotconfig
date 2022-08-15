@@ -172,6 +172,9 @@ exec --no-startup-id bluetoothctl connect F4:BC:DA:5E:9F:CB &
 # Signal main window should be floating
 for_window [class="(?i)signal"] floating enable
 
+# Mesen windows should be floating
+for_window [title="(?i)mesen.*"] floating enable
+
 # Teams main window should be floating
 # for_window [class="(?i)microsoft teams.*"] floating enable
 
