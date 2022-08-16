@@ -175,6 +175,9 @@ for_window [class="(?i)signal"] floating enable
 # Mesen windows should be floating
 for_window [title="(?i)mesen.*"] floating enable
 
+# FCEUX should be floating
+for_window [app_id="org.TasEmulators.fceux"] floating enable
+
 # Teams main window should be floating
 # for_window [class="(?i)microsoft teams.*"] floating enable
 
