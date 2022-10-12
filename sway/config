@@ -184,11 +184,12 @@ for_window [app_id="org.TasEmulators.fceux"] floating enable
 # Simics main window should be floating
 # for_window [class="Simics-common"] floating enable
 
-input "1133:16422:Logitech_T400" {
+input type:pointer {
       natural_scroll enabled
 }
 
-input "1739:0:Synaptics_tm2962-001" {
+input type:touchpad {
+      tap enabled
       natural_scroll enabled
 }
 
