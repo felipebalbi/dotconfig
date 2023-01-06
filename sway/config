@@ -2,7 +2,7 @@ set $mod Mod4
 
 font pango:Fira Code Regular 11
 
-default_border none
+default_border pixel 2
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
