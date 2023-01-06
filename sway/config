@@ -1,6 +1,8 @@
 set $mod Mod4
 
-font pango:Fira Code:size=12:style=bold
+font pango:Fira Code Regular 11
+
+default_border none
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -154,7 +156,7 @@ bar {
   position top
   font pango:Fira Code:size=12:style=bold
 
-  status_command while ~/.config/sway/status; do sleep 10; done
+  status_command while ~/.config/sway/status; do sleep 30; done
 }
 
 # Clipboard Manager
