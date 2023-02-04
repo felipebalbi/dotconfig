@@ -36,7 +36,7 @@
 
 (define-configuration nyxt/web-mode:web-mode
     ;; QWERTY home row.
-    ((nyxt/web-mode:hints-alphabet "DSJKHLFAGNMXCWEIO")
+    ((nyxt/web-mode:hints-alphabet "FJDKSLA;GH")
      (glyph "ω")))
 
 (define-configuration nyxt/auto-mode:auto-mode
