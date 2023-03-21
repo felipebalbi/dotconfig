@@ -171,6 +171,9 @@ exec --no-startup-id bluetoothctl connect EB:80:9F:01:61:5C &
 # Bluetooth Headset
 exec --no-startup-id bluetoothctl connect F4:BC:DA:5E:9F:CB &
 
+# KiCad windows should be floating
+for_window [class="KiCad"] floating enable
+
 # Signal main window should be floating
 for_window [class="(?i)signal"] floating enable
 
