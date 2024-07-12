@@ -1,7 +1,20 @@
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
+
 (in-package :cl-user)
 (defpackage :fb-stumpwm
   (:use :cl :stumpwm))
 (in-package :fb-stumpwm)
+(setf *default-package* :fb-stumpwm)
+
+;; Where contrib modules are located
+(set-module-dir "/usr/share/stumpwm/contrib/")
+
+;; Set a better cursor
+(run-shell-command "xsetroot -cursor_name left_ptr")
 
 ;; Must be the first
 (load "~/.config/stumpwm/init.lisp")
@@ -10,9 +23,9 @@
 (load "~/.config/stumpwm/bindings.lisp")
 (load "~/.config/stumpwm/colors.lisp")
 (load "~/.config/stumpwm/workspaces.lisp")
-(load "~/.config/stumpwm/battery.lisp")
-(load "~/.config/stumpwm/slynk.lisp")
-(load "~/.config/stumpwm/font.lisp")
+;; (load "~/.config/stumpwm/battery.lisp")
+;; (load "~/.config/stumpwm/slynk.lisp")
+;; (load "~/.config/stumpwm/font.lisp")
 
 ;; Must be the last
-(load "~/.config/stumpwm/mode-line")
+;;(load "~/.config/stumpwm/mode-line")

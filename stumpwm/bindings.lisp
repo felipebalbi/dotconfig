@@ -59,7 +59,7 @@
     ("s-9"   . "gselect 9")
     ("s-0"   . "gselect 10")
 
-    ("s-e"   . "exec emacs")
+    ("s-e"   . "exec emacsclient -c")
     ("s-B"   . "exec nyxt")
 
     ("s-C-l" . "exec xscreensaver-command -lock")

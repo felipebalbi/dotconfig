@@ -1,5 +1,7 @@
 (in-package :fb-stumpwm)
 
+(ql:quickload :slynk)
+
 ;; Slynk Settings
 (require :slynk)
 

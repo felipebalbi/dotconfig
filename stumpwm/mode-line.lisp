@@ -1,8 +1,8 @@
 (in-package :fb-stumpwm)
 
 ;; Wifi module
-(setf wifi:*iwconfig-path* "/run/current-system/profile/sbin/iwconfig")
-(setf wifi:*wifi-modeline-fmt* "^f1^f0 %e (%p)")
+;; (setf wifi:*iwconfig-path* "/run/current-system/profile/sbin/iwconfig")
+(setf wifi:*wifi-modeline-fmt* " %e (%p)")
 
 ;; Show kernel version
 (defparameter *kernel-version* nil)
@@ -30,7 +30,7 @@
          (level (/ (float cur) (float max)))
          (percentage (round (* 100 level))))
     (setf *brightness-level*
-          (format nil "^f1^f0^2 ~d%^n" percentage))))
+          (format nil "^2 ~d%^n" percentage))))
 
 (defun ml-fmt-brightness-level (ml)
   (declare (ignore ml))
@@ -40,9 +40,9 @@
 (add-screen-mode-line-formatter #\Z #'ml-fmt-brightness-level)
 
 ;; Set group-format
-(setf *group-format* "^[^(:fg \"#ff79c6\")^f2%n%s%t^f0^n^]")
+(setf *group-format* "^[^(:fg \"#ff79c6\")%n%s%t^n^]")
 
-;; Better mode line hightlight template
+;; Better mode line highlight template
 (setf *mode-line-highlight-template* "^[^(:bg \"#44475a\")~A^(:bg 0)^]")
 
 ;; Set modeline format
@@ -53,14 +53,14 @@
             "%S | "                     ; Slynk Status
             "%K | "                     ; Kernel Version
             "%C | "                     ; CPU
-            "%Z | "                     ; Brightness
-            "%I | "                     ; Wifi
-            "%B | "                     ; Battery %
+            ;; "%Z | "                     ; Brightness
+            ;; "%I | "                     ; Wifi
+            ;; "%B | "                     ; Battery %
             "%d"                        ; time and Date
             ))
 
 ;; Mode line time format
-(setf *time-modeline-string* "^f1^f0 %Y-%m-%d %H:%M")
+(setf *time-modeline-string* " %Y-%m-%d %H:%M")
 
 ;; Better modeline styling
 (setf *mode-line-border-width* 1)

@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:Fira Code Regular 11
+font pango:Iosevka Comfy 11
 
 default_border pixel 2
 
@@ -64,6 +64,9 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle && pkill -RTMIN+1 i3bloc
 
 # keyboard layout
 # exec --no-startup-id setxkbmap -layout us &
+
+# xdg desktop portal
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -170,6 +173,9 @@ exec --no-startup-id bluetoothctl connect EB:80:9F:01:61:5C &
 
 # Bluetooth Headset
 exec --no-startup-id bluetoothctl connect F4:BC:DA:5E:9F:CB &
+
+# Eightbits game engine
+for_window [class="eightbits"] floating enable
 
 # KiCad windows should be floating
 for_window [class="KiCad"] floating enable
