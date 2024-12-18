@@ -1,0 +1,56 @@
+[general]
+live_config_reload = true
+import = [
+       "catppuccin/catppuccin-macchiato.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 1
+blur = true
+
+[window.padding]
+x = 10
+y = 10
+
+[window.dimensions]
+columns = 100
+lines = 80
+
+[font]
+size = 12
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "FiraCode Nerd Font"
+style = "Bold Italic"
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[terminal.shell]
+program = "C:\\Program Files\\nu\\bin\\nu.exe"
+args = [
+     "--login"
+]
+
+[selection]
+save_to_clipboard = true
+
+[keyboard]
+bindings = [
+    { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+]
+
+[mouse]
+bindings = [
+    { mouse = "Right", mods = "Control", action = "Paste" },
+]
