@@ -14,7 +14,7 @@ bindsym $mod+Return exec foot
 bindsym $mod+Shift+q kill
 
 # dmenu
-bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'Fira Code:size=14' -p '>'"
+bindsym $mod+Control+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'Fira Code:size=14' -p '>'"
 
 # screenshot
 bindsym $mod+Control+s exec grim -g "$(slurp)" /tmp/screenshot.png

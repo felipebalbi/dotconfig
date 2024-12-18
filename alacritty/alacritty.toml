@@ -37,7 +37,7 @@ family = "FiraCode Nerd Font"
 style = "Regular"
 
 [terminal.shell]
-program = "C:\\Program Files\\nu\\bin\\nu.exe"
+program = "/sbin/bash"
 args = [
      "--login"
 ]
