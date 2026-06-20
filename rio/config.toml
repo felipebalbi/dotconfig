@@ -1,0 +1,12 @@
+# See the full configuration reference: https://rioterm.com/docs/config
+
+# Dark theme (loaded from ~/.config/rio/themes/catppuccin-mocha.toml)
+theme = "catppuccin-mocha"
+
+[shell]
+program = "/opt/homebrew/bin/nu"
+args = ["--login"]
+
+[fonts]
+size = 14
+family = "Aporetic Serif Mono"
