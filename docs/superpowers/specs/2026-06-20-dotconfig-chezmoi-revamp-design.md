@@ -28,7 +28,7 @@ The actively-managed toolset:
 | Apply mode          | **Managed files** (chezmoi default), not symlink mode                                                      |
 | Symlink granularity | Per-app effect: chezmoi only manages files present in the source; never touches unmanaged `~/.config` apps |
 | Repo layout         | `home/` (chezmoi source via `.chezmoiroot`) + `legacy/` (preserved) + `docs/`                              |
-| `install.sh` scope  | macOS (Homebrew) + Linux (apt/dnf/pacman auto-detect)                                                      |
+| `install.sh` scope  | macOS (Homebrew) + Arch Linux (pacman + `paru` for AUR)                                                    |
 | Windows             | `install.ps1` thin wrapper; chezmoi + winget                                                               |
 | Bootstrap           | chezmoi official one-liner; repo cloned to chezmoi's default source dir                                    |
 | Conflict handling   | chezmoi leaves unmanaged files alone; managed files overwritten on apply (preview via `chezmoi diff`)      |
@@ -59,7 +59,7 @@ dotconfig/
     │   ├── nushell/env.nu.tmpl             # TERMINAL=rio, starship + zoxide init
     │   └── starship.toml                   # → ~/.config/starship.toml
     ├── dot_gitconfig                       # → ~/.gitconfig (from git/gitconfig)
-    ├── run_onchange_install-packages.sh.tmpl   # unix: brew/apt/dnf/pacman
+    ├── run_onchange_install-packages.sh.tmpl   # unix: brew (macOS) / pacman+AUR (Arch)
     ├── run_onchange_install-packages.ps1.tmpl  # windows: winget
     └── run_once_after_set-defaults.sh.tmpl     # default login shell + default terminal
 ```
@@ -108,8 +108,10 @@ changes (chezmoi hashes the rendered script).
   `protesilaos/aporetic` GitHub releases into the platform font directory
   (identical mechanism on every OS).
 
-Package managers: Homebrew (macOS), apt/dnf/pacman auto-detected (Linux),
-winget (Windows).
+Package managers: Homebrew (macOS), pacman + **paru** for AUR packages (Arch
+Linux), winget (Windows). The Arch script bootstraps `paru` if it is missing,
+then installs official-repo packages with `pacman` and AUR-only packages (e.g.
+rio, possibly others) with `paru`.
 
 ## rio as the default terminal "everywhere"
 
@@ -117,9 +119,10 @@ Per-OS reality, stated honestly:
 
 - **Shell-level (all OSes):** nushell `env.nu` exports `TERMINAL = "rio"`, so any
   tool honoring `$TERMINAL` launches rio.
-- **Linux:** `run_once` registers rio via
-  `update-alternatives --set x-terminal-emulator` (Debian) and
-  `xdg-settings` / `gsettings` where available.
+- **Arch Linux:** `run_once` sets rio as the default terminal via
+  `xdg-settings set default-terminal-emulator rio.desktop` (and `gsettings`
+  where a GNOME-style setting applies). No `update-alternatives` — that is a
+  Debian mechanism and Arch is the only supported distro.
 - **macOS:** there is **no system-wide "default terminal" API** — applications do
   not share a default terminal setting. We ensure rio is installed and used and
   set `$TERMINAL`; the limitation is documented rather than worked around.
@@ -161,18 +164,20 @@ sets it as the login shell via `chsh` on macOS/Linux. Not applicable on Windows.
 ## Out of scope
 
 - Migrating or maintaining any `legacy/` window-manager or system configs.
+- Non-Arch Linux distributions (Debian/apt, Fedora/dnf, etc.). Arch Linux is the
+  only supported Linux distro; the Unix installer targets macOS + Arch.
 - Secrets management (no secrets are currently tracked; can be added via chezmoi
   later if needed).
 - ssh, vim, zsh configs (preserved in `legacy/`, not actively managed).
 
 ## Success criteria
 
-1. On a fresh macOS or Linux machine, the Unix one-liner produces a working
+1. On a fresh macOS or Arch Linux machine, the Unix one-liner produces a working
    nushell + starship + rio + emacs + git environment with the modern CLI tools
    and Aporetic fonts installed.
 2. On a fresh Windows machine, the PowerShell flow installs the same toolset via
    winget and applies the same config source tree.
 3. `chezmoi apply` is idempotent and never touches unmanaged `~/.config` apps.
 4. rio is the `$TERMINAL` everywhere, and the OS-level default terminal wherever
-   the platform supports it (Linux; documented limitations on macOS/Windows).
+   the platform supports it (Arch Linux; documented limitations on macOS/Windows).
 5. All previous configuration remains present under `legacy/`.
