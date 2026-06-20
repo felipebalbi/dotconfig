@@ -85,9 +85,12 @@ renaming (`dot_` prefixes etc.).
 The fresh-machine one-liners (the core deliverable):
 
 - **macOS / Linux:**
-  `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply felipebalbi`
+  `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/felipebalbi/dotconfig.git`
 - **Windows (PowerShell):**
-  `winget install twpayne.chezmoi; chezmoi init --apply felipebalbi`
+  `winget install twpayne.chezmoi; chezmoi init --apply https://github.com/felipebalbi/dotconfig.git`
+
+(The explicit repo URL is required because `chezmoi init felipebalbi` would look
+for a repo named `dotfiles`; this repository is `dotconfig`.)
 
 `install.sh` and `install.ps1` at the repo root are thin, memorable wrappers
 around these. One command on a bare machine results in: chezmoi installed, repo
@@ -104,9 +107,11 @@ changes (chezmoi hashes the rendered script).
 
 - **Core:** nushell, starship, rio, emacs, git
 - **Modern CLI:** ripgrep, fd, fzf, bat, eza, zoxide, git-delta, jq
-- **Fonts:** Aporetic family fetched via `.chezmoiexternal.toml` from
-  `protesilaos/aporetic` GitHub releases into the platform font directory
-  (identical mechanism on every OS).
+- **Fonts:** Aporetic family fetched via `.chezmoiexternal.toml` from the
+  `protesilaos/aporetic` git **tag tarball** (the project publishes no GitHub
+  release assets), extracting the `.ttf` files into the platform font directory.
+  Aporetic is **not** a Nerd Font, so starship/eza configs are kept glyph-free to
+  avoid missing-glyph boxes.
 
 Package managers: Homebrew (macOS), pacman + **paru** for AUR packages (Arch
 Linux), winget (Windows). The Arch script bootstraps `paru` if it is missing,
