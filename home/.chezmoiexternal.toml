@@ -1,0 +1,16 @@
+[".config/emacs"]
+    type = "git-repo"
+    url = "https://github.com/felipebalbi/emacs.d.git"
+    refreshPeriod = "168h"
+
+{{- if ne .chezmoi.os "windows" }}
+{{- $fontDir := ".local/share/fonts/aporetic" }}
+{{- if eq .chezmoi.os "darwin" }}{{ $fontDir = "Library/Fonts" }}{{ end }}
+
+["{{ $fontDir }}"]
+    type = "archive"
+    url = "https://github.com/protesilaos/aporetic/archive/refs/tags/1.2.0.tar.gz"
+    stripComponents = 3
+    include = ["**/TTF/*.ttf"]
+    refreshPeriod = "672h"
+{{- end }}
