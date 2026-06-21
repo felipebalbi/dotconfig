@@ -1,10 +1,11 @@
+{{- $nu := lookPath "nu" -}}
 # See the full configuration reference: https://rioterm.com/docs/config
 
 # Dark theme (loaded from ~/.config/rio/themes/catppuccin-mocha.toml)
 theme = "catppuccin-mocha"
 
 [shell]
-program = "/opt/homebrew/bin/nu"
+program = {{ if $nu }}{{ $nu | quote }}{{ else }}"nu"{{ end }}
 args = ["--login"]
 
 [fonts]
