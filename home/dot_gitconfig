@@ -18,13 +18,13 @@
         from           = Felipe Balbi <balbi@kernel.org>
         smtpuser       = balbi
 	confirm = auto
-	aliasesfile = /home/balbi/.aliases
+	aliasesfile = ~/.aliases
 	aliasfiletype = mutt
 	chainreplyto = false
 	composeencoding = UTF-8
 	assume8bitEncoding = UTF-8
 [gpg]
-	program = /usr/bin/gpg
+	program = gpg
 [fetch]
 	prune = true
 [color]
