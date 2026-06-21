@@ -1,0 +1,38 @@
+{{- if ne .chezmoi.os "windows" -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+# chezmoi re-runs this whenever the rendered content (i.e. the package list) changes.
+
+os="{{ .chezmoi.os }}"
+
+if [ "$os" = "darwin" ]; then
+    if ! command -v brew >/dev/null 2>&1; then
+        echo "==> Installing Homebrew"
+        NONINTERACTIVE=1 /bin/bash -c \
+            "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        if [ -x /opt/homebrew/bin/brew ]; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        elif [ -x /usr/local/bin/brew ]; then
+            eval "$(/usr/local/bin/brew shellenv)"
+        fi
+    fi
+    echo "==> Installing Homebrew formulae"
+    brew install {{ range .packages.darwin.brews }}{{ . | quote }} {{ end }}
+    echo "==> Installing Homebrew casks"
+    brew install --cask {{ range .packages.darwin.casks }}{{ . | quote }} {{ end }}
+
+elif [ "$os" = "linux" ]; then
+    # Arch Linux only.
+    if ! command -v paru >/dev/null 2>&1; then
+        echo "==> Bootstrapping paru (AUR helper)"
+        sudo pacman -S --needed --noconfirm base-devel git
+        tmpdir="$(mktemp -d)"
+        git clone https://aur.archlinux.org/paru-bin.git "$tmpdir/paru-bin"
+        ( cd "$tmpdir/paru-bin" && makepkg -si --noconfirm )
+        rm -rf "$tmpdir"
+    fi
+    echo "==> Installing packages via paru"
+    paru -S --needed --noconfirm {{ range .packages.linux.paru }}{{ . | quote }} {{ end }}
+fi
+{{- end -}}
