@@ -1,7 +1,6 @@
 [user]
 	name = Felipe Balbi
 	email = felipe@balbi.sh
-	signingkey = 0x35CAA444
 [format]
 	suffix = .diff
 	numbered = auto
@@ -38,8 +37,6 @@
 	ff = only
 # [push]
 # 	gpgSign = if-asked
-[tag]
-	forceSignAnnotated = true
 [include]
 	path = ~/.gitconfig.local
 
