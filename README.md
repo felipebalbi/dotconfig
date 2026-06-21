@@ -38,11 +38,11 @@ home/                 # chezmoi source state
     rio/  nushell/  starship.toml   # all platforms
     niri/                           # Arch only (Wayland compositor)
     systemd/user/emacs.service      # Arch only (Emacs daemon unit)
-  private_dot_ssh/    # -> ~/.ssh/ (0700); macOS + Arch only
+  private_dot_ssh/    # -> ~/.ssh/ (0700); Arch Linux only
   dot_gitconfig       # -> ~/.gitconfig
   .chezmoidata/       # packages.yaml: per-OS package lists
   .chezmoiexternal.toml         # emacs.d clone + Aporetic fonts
-  .chezmoiignore                # per-OS exclusions (niri/systemd Arch-only, ssh not on Windows)
+  .chezmoiignore                # per-OS exclusions (niri/systemd/ssh are Arch-only)
   run_onchange_before_install-packages.sh.tmpl   # macOS/Arch package install
   run_onchange_before_install-packages.ps1.tmpl  # Windows package install
   run_once_after_set-defaults.sh.tmpl            # login shell, default terminal, emacs.service

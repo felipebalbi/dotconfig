@@ -1,7 +1,5 @@
 {{ if ne .chezmoi.os "linux" -}}
 .config/niri
 .config/systemd
-{{ end -}}
-{{ if eq .chezmoi.os "windows" -}}
 .ssh
 {{ end -}}

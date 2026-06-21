@@ -188,7 +188,7 @@ that ignores each config on the OSes where it does not apply.
 | Source | Target | OSes |
 |---|---|---|
 | `home/dot_config/niri/config.kdl` | `~/.config/niri/config.kdl` | Arch Linux only |
-| `home/private_dot_ssh/config` | `~/.ssh/config` (dir 0700) | macOS + Arch Linux (ignored on Windows) |
+| `home/private_dot_ssh/config` | `~/.ssh/config` (dir 0700) | Arch Linux only |
 | `home/dot_config/systemd/user/emacs.service` | `~/.config/systemd/user/emacs.service` | Arch Linux only |
 
 - **niri** is added to the Arch `paru` package list (it is in the `extra` repo),
