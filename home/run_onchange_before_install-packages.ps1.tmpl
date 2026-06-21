@@ -1,0 +1,43 @@
+{{- if eq .chezmoi.os "windows" -}}
+# Managed by chezmoi. Re-runs when the rendered package list changes.
+$ErrorActionPreference = "Stop"
+
+$packages = @(
+{{- range .packages.windows.winget }}
+    "{{ . }}"
+{{- end }}
+)
+
+foreach ($id in $packages) {
+    Write-Host "==> Installing $id"
+    winget install --exact --id $id `
+        --accept-source-agreements --accept-package-agreements --silent
+}
+
+# --- Aporetic fonts (no winget package; install + register per-user) ---
+$fontVersion = "1.2.0"
+$fontUrl = "https://github.com/protesilaos/aporetic/archive/refs/tags/$fontVersion.tar.gz"
+$work = Join-Path $env:TEMP "aporetic-$fontVersion"
+New-Item -ItemType Directory -Path $work -Force | Out-Null
+$tarball = Join-Path $work "aporetic.tar.gz"
+Invoke-WebRequest -Uri $fontUrl -OutFile $tarball
+tar -xzf $tarball -C $work
+$fontDir = Join-Path $env:LOCALAPPDATA "Microsoft\Windows\Fonts"
+New-Item -ItemType Directory -Path $fontDir -Force | Out-Null
+Get-ChildItem -Path $work -Recurse -Filter "*.ttf" |
+    Where-Object { $_.FullName -match "\\TTF\\" } |
+    ForEach-Object {
+        $dest = Join-Path $fontDir $_.Name
+        Copy-Item $_.FullName $dest -Force
+        $regName = [System.IO.Path]::GetFileNameWithoutExtension($_.Name) + " (TrueType)"
+        New-ItemProperty -Path "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Fonts" `
+            -Name $regName -Value $dest -PropertyType String -Force | Out-Null
+    }
+
+# --- Make nushell read ~/.config/nushell (its Windows default is %APPDATA%\nushell) ---
+$nuTarget = Join-Path $HOME ".config\nushell"
+$nuDefault = Join-Path $env:APPDATA "nushell"
+if ((Test-Path $nuTarget) -and -not (Test-Path $nuDefault)) {
+    New-Item -ItemType Junction -Path $nuDefault -Target $nuTarget | Out-Null
+}
+{{- end -}}
