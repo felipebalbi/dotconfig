@@ -4,6 +4,14 @@ set -euo pipefail
 
 # --- Set nushell as the default login shell ---
 nu_path="$(command -v nu || true)"
+if [ -z "$nu_path" ]; then
+    for candidate in /opt/homebrew/bin/nu /usr/local/bin/nu /usr/bin/nu; do
+        if [ -x "$candidate" ]; then
+            nu_path="$candidate"
+            break
+        fi
+    done
+fi
 if [ -n "$nu_path" ]; then
     if ! grep -qxF "$nu_path" /etc/shells 2>/dev/null; then
         echo "$nu_path" | sudo tee -a /etc/shells >/dev/null
@@ -13,6 +21,22 @@ if [ -n "$nu_path" ]; then
     fi
 fi
 
+{{ if eq .chezmoi.os "darwin" -}}
+# --- macOS: nushell's default config dir is "~/Library/Application Support/nushell";
+#     link it to the chezmoi-managed ~/.config/nushell so the config is found. ---
+nu_xdg="$HOME/.config/nushell"
+nu_app_support="$HOME/Library/Application Support/nushell"
+mkdir -p "$nu_xdg"
+if [ -L "$nu_app_support" ]; then
+    :
+elif [ -d "$nu_app_support" ] && [ -z "$(ls -A "$nu_app_support" 2>/dev/null)" ]; then
+    rmdir "$nu_app_support"
+    ln -s "$nu_xdg" "$nu_app_support"
+elif [ ! -e "$nu_app_support" ]; then
+    ln -s "$nu_xdg" "$nu_app_support"
+fi
+{{- end }}
+
 {{ if eq .chezmoi.os "linux" -}}
 # --- Arch Linux: rio as the default terminal + refresh font cache ---
 if command -v xdg-settings >/dev/null 2>&1; then
@@ -20,6 +44,10 @@ if command -v xdg-settings >/dev/null 2>&1; then
 fi
 if command -v fc-cache >/dev/null 2>&1; then
     fc-cache -f >/dev/null 2>&1 || true
+fi
+# --- Arch Linux: enable the Emacs user service (how Emacs runs as a daemon) ---
+if command -v systemctl >/dev/null 2>&1; then
+    systemctl --user enable emacs.service 2>/dev/null || true
 fi
 {{- end }}
 {{- end -}}
