@@ -213,7 +213,14 @@ that ignores each config on the OSes where it does not apply.
   brew-installed tools (starship, zoxide, eza, …) resolve in nushell sessions.
 - `install.sh` keeps its executable bit (mode `100755`).
 
-## Success criteria
+## Revision 3 (Nerd Font glyphs in rio)
+
+- `starship` uses the Nerd Font symbols preset. rio renders those glyphs via
+  `fonts.symbol-map`, mapping the Nerd Font codepoint ranges to **Symbols Nerd
+  Font Mono** — the text font stays Aporetic Serif Mono. The symbols-only font is
+  installed on every OS: `font-symbols-only-nerd-font` (brew cask),
+  `ttf-nerd-fonts-symbols-mono` (Arch `extra`), and the nerd-fonts v3.4.0
+  `NerdFontsSymbolsOnly.zip` downloaded + registered by the Windows script.
 
 ## Success criteria
 

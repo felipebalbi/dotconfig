@@ -67,8 +67,9 @@ install.ps1           # convenience wrapper around the Windows flow
   `xdg-settings` on Arch. macOS has no system-wide default-terminal setting, and
   rio does not implement the Windows console-handoff API, so on those platforms
   rio is installed and used but not registered as an OS-level default.
-- **Fonts:** the `nushell` aliases avoid glyph icons, but `starship` uses the
-  Nerd Font symbols preset. Use a Nerd Font in your terminal for them to render
-  (Aporetic itself is not patched with Nerd Font glyphs).
+- **Fonts:** `starship` uses the Nerd Font symbols preset. rio renders those
+  glyphs by mapping the Nerd Font codepoint ranges to **Symbols Nerd Font Mono**
+  (installed by the package step) via `fonts.symbol-map`, so the main text font
+  stays Aporetic Serif Mono. In other terminals, use a Nerd Font to see them.
 - Old window-manager and system configs live under `legacy/` and are not touched
   by chezmoi.
