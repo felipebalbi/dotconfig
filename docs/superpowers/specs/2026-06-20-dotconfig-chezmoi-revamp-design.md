@@ -110,8 +110,9 @@ changes (chezmoi hashes the rendered script).
 - **Fonts:** Aporetic family fetched via `.chezmoiexternal.toml` from the
   `protesilaos/aporetic` git **tag tarball** (the project publishes no GitHub
   release assets), extracting the `.ttf` files into the platform font directory.
-  Aporetic is **not** a Nerd Font, so starship/eza configs are kept glyph-free to
-  avoid missing-glyph boxes.
+  (Note: per Revision 3 the `starship` config uses the Nerd Font symbols preset,
+  so a Nerd Font in the terminal is required for those glyphs; Aporetic itself is
+  not Nerd-Font-patched.)
 
 Package managers: Homebrew (macOS), pacman + **paru** for AUR packages (Arch
 Linux), winget (Windows). The Arch script bootstraps `paru` if it is missing,
