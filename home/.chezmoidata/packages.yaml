@@ -1,0 +1,57 @@
+# Bare-minimum toolset, per package-manager identifiers.
+# Consumed by run_onchange_before_install-packages.{sh,ps1}.tmpl.
+packages:
+  # macOS — Homebrew
+  darwin:
+    brews:
+      - nushell
+      - starship
+      - emacs
+      - git
+      - gnupg
+      - ripgrep
+      - fd
+      - fzf
+      - bat
+      - eza
+      - zoxide
+      - git-delta
+      - jq
+    casks:
+      - rio
+
+  # Arch Linux — installed via paru (also resolves official-repo packages)
+  linux:
+    paru:
+      - nushell
+      - starship
+      - rio
+      - emacs
+      - git
+      - gnupg
+      - ripgrep
+      - fd
+      - fzf
+      - bat
+      - eza
+      - zoxide
+      - git-delta
+      - jq
+
+  # Windows — winget
+  windows:
+    winget:
+      - Nushell.Nushell
+      - Starship.Starship
+      - raphamorim.rio
+      - GNU.Emacs
+      - Git.Git
+      - GnuPG.GnuPG
+      - BurntSushi.ripgrep.MSVC
+      - sharkdp.fd
+      - junegunn.fzf
+      - sharkdp.bat
+      - eza-community.eza
+      - ajeetdsouza.zoxide
+      - dandavison.delta
+      - jqlang.jq
