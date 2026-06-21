@@ -168,12 +168,51 @@ sets it as the login shell via `chsh` on macOS/Linux. Not applicable on Windows.
 
 ## Out of scope
 
-- Migrating or maintaining any `legacy/` window-manager or system configs.
+- Migrating or maintaining any `legacy/` window-manager or system configs (other
+  than those promoted in Revision 2 below).
 - Non-Arch Linux distributions (Debian/apt, Fedora/dnf, etc.). Arch Linux is the
   only supported Linux distro; the Unix installer targets macOS + Arch.
 - Secrets management (no secrets are currently tracked; can be added via chezmoi
   later if needed).
-- ssh, vim, zsh configs (preserved in `legacy/`, not actively managed).
+- vim, zsh configs (preserved in `legacy/`, not actively managed).
+
+## Revision 2 (post-implementation amendments)
+
+Added after the first whole-branch review and follow-up user requirements.
+
+### Additional managed configs (promoted out of `legacy/`)
+
+OS-conditional application is handled by a new templated `home/.chezmoiignore`
+that ignores each config on the OSes where it does not apply.
+
+| Source | Target | OSes |
+|---|---|---|
+| `home/dot_config/niri/config.kdl` | `~/.config/niri/config.kdl` | Arch Linux only |
+| `home/private_dot_ssh/config` | `~/.ssh/config` (dir 0700) | macOS + Arch Linux (ignored on Windows) |
+| `home/dot_config/systemd/user/emacs.service` | `~/.config/systemd/user/emacs.service` | Arch Linux only |
+
+- **niri** is added to the Arch `paru` package list (it is in the `extra` repo),
+  so a fresh Arch machine installs the compositor it configures.
+- The **emacs user service** is enabled on Arch via
+  `systemctl --user enable emacs.service` in `run_once_after_set-defaults.sh`
+  (this is how Emacs is run as a daemon on the Arch box).
+
+### macOS correctness fixes (from the whole-branch review)
+
+- **nushell config location (was a blocker):** nushell's default config dir on
+  macOS is `~/Library/Application Support/nushell`, not `~/.config/nushell`. The
+  `run_once_after` script creates a symlink
+  `~/Library/Application Support/nushell` → `~/.config/nushell` on macOS, mirroring
+  the Windows `%APPDATA%\nushell` junction. (Linux is native XDG; no change.)
+- **Homebrew PATH on Apple Silicon:** `/opt/homebrew/bin` is not on the default
+  login PATH. Two fixes: (a) the `run_once_after` login-shell step falls back to
+  absolute candidate paths (`/opt/homebrew/bin/nu`, `/usr/local/bin/nu`,
+  `/usr/bin/nu`) when `nu` is not on PATH, so the `chsh` step does not silently
+  no-op; (b) `nushell/env.nu` prepends Homebrew's bin dirs to `PATH` on macOS so
+  brew-installed tools (starship, zoxide, eza, …) resolve in nushell sessions.
+- `install.sh` keeps its executable bit (mode `100755`).
+
+## Success criteria
 
 ## Success criteria
 
