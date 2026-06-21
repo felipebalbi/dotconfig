@@ -19,6 +19,7 @@ packages:
       - jq
     casks:
       - rio
+      - font-symbols-only-nerd-font
 
   # Arch Linux — installed via paru (also resolves official-repo packages)
   linux:
@@ -38,6 +39,7 @@ packages:
       - zoxide
       - git-delta
       - jq
+      - ttf-nerd-fonts-symbols-mono
 
   # Windows — winget
   windows:

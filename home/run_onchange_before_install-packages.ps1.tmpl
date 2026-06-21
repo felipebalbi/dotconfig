@@ -34,6 +34,24 @@ Get-ChildItem -Path $work -Recurse -Filter "*.ttf" |
             -Name $regName -Value $dest -PropertyType String -Force | Out-Null
     }
 
+# --- Symbols Nerd Font (rio maps glyph ranges to it; no winget package) ---
+$nerdVersion = "v3.4.0"
+$nerdUrl = "https://github.com/ryanoasis/nerd-fonts/releases/download/$nerdVersion/NerdFontsSymbolsOnly.zip"
+$nerdWork = Join-Path $env:TEMP "nerd-symbols-$nerdVersion"
+New-Item -ItemType Directory -Path $nerdWork -Force | Out-Null
+$nerdZip = Join-Path $nerdWork "symbols.zip"
+Invoke-WebRequest -Uri $nerdUrl -OutFile $nerdZip
+Expand-Archive -Path $nerdZip -DestinationPath $nerdWork -Force
+Get-ChildItem -Path $nerdWork -Recurse -Filter "*.ttf" |
+    Where-Object { $_.Name -like "SymbolsNerdFont*" } |
+    ForEach-Object {
+        $dest = Join-Path $fontDir $_.Name
+        Copy-Item $_.FullName $dest -Force
+        $regName = [System.IO.Path]::GetFileNameWithoutExtension($_.Name) + " (TrueType)"
+        New-ItemProperty -Path "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Fonts" `
+            -Name $regName -Value $dest -PropertyType String -Force | Out-Null
+    }
+
 # --- Make nushell read ~/.config/nushell (its Windows default is %APPDATA%\nushell) ---
 # run_onchange_before_ runs before chezmoi applies the managed nushell files, so
 # create the junction target now; chezmoi then writes config.nu/env.nu into it.
