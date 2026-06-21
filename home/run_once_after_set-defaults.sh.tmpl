@@ -1,0 +1,25 @@
+{{- if ne .chezmoi.os "windows" -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+# --- Set nushell as the default login shell ---
+nu_path="$(command -v nu || true)"
+if [ -n "$nu_path" ]; then
+    if ! grep -qxF "$nu_path" /etc/shells 2>/dev/null; then
+        echo "$nu_path" | sudo tee -a /etc/shells >/dev/null
+    fi
+    if [ "${SHELL:-}" != "$nu_path" ]; then
+        chsh -s "$nu_path" || echo "chsh failed; set your login shell to $nu_path manually."
+    fi
+fi
+
+{{ if eq .chezmoi.os "linux" -}}
+# --- Arch Linux: rio as the default terminal + refresh font cache ---
+if command -v xdg-settings >/dev/null 2>&1; then
+    xdg-settings set default-terminal-emulator rio.desktop 2>/dev/null || true
+fi
+if command -v fc-cache >/dev/null 2>&1; then
+    fc-cache -f >/dev/null 2>&1 || true
+fi
+{{- end }}
+{{- end -}}
