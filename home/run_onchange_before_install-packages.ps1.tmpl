@@ -35,9 +35,12 @@ Get-ChildItem -Path $work -Recurse -Filter "*.ttf" |
     }
 
 # --- Make nushell read ~/.config/nushell (its Windows default is %APPDATA%\nushell) ---
+# run_onchange_before_ runs before chezmoi applies the managed nushell files, so
+# create the junction target now; chezmoi then writes config.nu/env.nu into it.
 $nuTarget = Join-Path $HOME ".config\nushell"
 $nuDefault = Join-Path $env:APPDATA "nushell"
-if ((Test-Path $nuTarget) -and -not (Test-Path $nuDefault)) {
+New-Item -ItemType Directory -Path $nuTarget -Force | Out-Null
+if (-not (Test-Path $nuDefault)) {
     New-Item -ItemType Junction -Path $nuDefault -Target $nuTarget | Out-Null
 }
 {{- end -}}
