@@ -26,6 +26,7 @@ packages:
       - nushell
       - starship
       - rio
+      - niri
       - emacs
       - git
       - gnupg
