@@ -1,0 +1,25 @@
+{{- $nu := lookPath "nu" -}}
+# See the full configuration reference: https://rioterm.com/docs/config
+
+# Dark theme (loaded from themes/catppuccin-mocha.toml beside this file)
+theme = "catppuccin-mocha"
+
+[shell]
+program = {{ if $nu }}{{ $nu | quote }}{{ else }}"nu"{{ end }}
+args = ["--login"]
+
+[fonts]
+size = 14
+family = "Aporetic Serif Mono"
+symbol-map = [
+  { start = "e000", end = "e00a", font-family = "Symbols Nerd Font Mono" }, # Pomicons
+  { start = "e0a0", end = "e0d7", font-family = "Symbols Nerd Font Mono" }, # Powerline
+  { start = "e200", end = "e2a9", font-family = "Symbols Nerd Font Mono" }, # Font Awesome Extension
+  { start = "e300", end = "e3e3", font-family = "Symbols Nerd Font Mono" }, # Weather
+  { start = "e5fa", end = "e6b7", font-family = "Symbols Nerd Font Mono" }, # Seti-UI + Devicons
+  { start = "e700", end = "e8ef", font-family = "Symbols Nerd Font Mono" }, # Devicons
+  { start = "ea60", end = "ec1e", font-family = "Symbols Nerd Font Mono" }, # Codicons
+  { start = "f000", end = "f2ff", font-family = "Symbols Nerd Font Mono" }, # Font Awesome
+  { start = "f400", end = "f533", font-family = "Symbols Nerd Font Mono" }, # Octicons
+  { start = "f0001", end = "f1af0", font-family = "Symbols Nerd Font Mono" }, # Material Design
+]

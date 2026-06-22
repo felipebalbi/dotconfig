@@ -3,3 +3,12 @@
 .config/systemd
 .ssh
 {{ end -}}
+
+{{ if eq .chezmoi.os "windows" -}}
+# Rio and Nushell live under AppData on Windows (see AppData/ source tree).
+.config/rio
+.config/nushell
+{{ else -}}
+# AppData targets are Windows-only.
+AppData
+{{ end -}}
