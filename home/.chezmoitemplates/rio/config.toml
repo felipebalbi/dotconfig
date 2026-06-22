@@ -9,7 +9,7 @@ program = {{ if $nu }}{{ $nu | quote }}{{ else }}"nu"{{ end }}
 args = ["--login"]
 
 [fonts]
-size = 14
+size = 16
 family = "Aporetic Serif Mono"
 symbol-map = [
   { start = "e000", end = "e00a", font-family = "Symbols Nerd Font Mono" }, # Pomicons
